@@ -12,11 +12,8 @@
       color: #333;
       line-height: 1.6;
     }
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
+    .container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    
     header {
       text-align: center;
       padding: 3.5rem 1rem 2.5rem;
@@ -29,6 +26,7 @@
     header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700; }
     header .subtitle { font-size: 1.1rem; opacity: 0.95; margin-bottom: 0.3rem; }
     header .tagline { font-size: 0.95rem; opacity: 0.85; }
+    
     nav {
       display: flex;
       justify-content: center;
@@ -43,13 +41,31 @@
       z-index: 10;
       flex-wrap: wrap;
     }
-    nav a {
+    nav button {
+      background: none;
+      border: none;
       color: #667eea;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
     }
-    nav a:hover { color: #764ba2; }
+    nav button:hover { color: #764ba2; background: rgba(102, 126, 234, 0.1); }
+    nav button.active { background: #667eea; color: white; }
+    
+    .page {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .page.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
     section {
       background: white;
       padding: 2rem;
@@ -66,213 +82,182 @@
     }
     .item { margin-bottom: 1.5rem; }
     .item:last-child { margin-bottom: 0; }
-    .item .role {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 0.2rem;
-    }
-    .item .meta {
-      color: #888;
-      font-size: 0.88rem;
-      margin-bottom: 0.5rem;
-    }
-    .item p {
-      color: #555;
-      font-size: 0.93rem;
-    }
-    .item ul {
-      margin: 0.5rem 0 0 1.2rem;
-      color: #555;
-      font-size: 0.93rem;
-    }
+    .item .role { font-weight: 600; color: #333; margin-bottom: 0.2rem; }
+    .item .meta { color: #888; font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .item ul { margin: 0.5rem 0 0 1.2rem; color: #555; font-size: 0.93rem; }
     .item li { margin-bottom: 0.3rem; }
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .contact-links a {
-      color: #667eea;
-      text-decoration: none;
-      font-size: 0.92rem;
-      border: 1px solid #667eea;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-    }
-    .contact-links a:hover {
-      background: #667eea;
-      color: white;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
+    .contact-links a { color: #667eea; text-decoration: none; font-size: 0.95rem; border: 1px solid #667eea; padding: 0.6rem 1.5rem; border-radius: 25px; }
+    .contact-links a:hover { background: #667eea; color: white; }
+    footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.85rem; }
+    
     @media (max-width: 600px) {
       header h1 { font-size: 1.7rem; }
-      nav { gap: 1rem; font-size: 0.82rem; padding: 0.7rem; }
+      nav { gap: 0.5rem; font-size: 0.82rem; padding: 0.7rem; }
       section { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#education">Education</a>
-  <a href="#research">Research</a>
-  <a href="#internship">Internship</a>
-  <a href="#leadership">Leadership</a>
-  <a href="#contact">Contact</a>
-</nav>
-
 <div class="container">
-
-  <header id="about">
+  
+  <header>
     <h1>Chenyu Nie</h1>
-    <p class="subtitle">M.A. in China Development Studies @ The University of Hong Kong | B.A. in Broadcasting & Television @ Dalian University of Technology</p>
-    <p class="tagline">Communication × Public Policy × Data Analytics | Passionate about Social Issues & Tech-Enabled Solutions</p>
+    <p class="subtitle">M.A. in China Development Studies @ HKU | B.A. in Broadcasting & Television @ DUT</p>
+    <p class="tagline">Communication × Public Policy × Data Analytics</p>
   </header>
 
-  <section id="education">
-    <h2>Education</h2>
-    
-    <div class="item">
-      <div class="role">The University of Hong Kong | M.A. in China Development Studies</div>
-      <div class="meta">Sep 2025 – Present</div>
-      <p>Relevant coursework: Chinese Economic Development and Transition, Contemporary Chinese Politics, Globalization and Spatial Economic Restructuring in China, China's Land and Housing System Studies.</p>
-    </div>
+  <nav>
+    <button class="nav-btn active" onclick="showPage('home', this)">Home</button>
+    <button class="nav-btn" onclick="showPage('research', this)">Research</button>
+    <button class="nav-btn" onclick="showPage('internship', this)">Internship</button>
+    <button class="nav-btn" onclick="showPage('leadership', this)">Leadership</button>
+    <button class="nav-btn" onclick="showPage('contact', this)">Contact</button>
+  </nav>
 
-    <div class="item">
-      <div class="role">Dalian University of Technology (985/211/Double First-Class) | B.A. in Broadcasting & Television</div>
-      <div class="meta">Sep 2021 – Jun 2025 | GPA 89.2/100</div>
-      <p>Relevant coursework: Media Management, Public Relations Communication, Foundations of Computational Communication, Global Marketing Trends, Online Public Opinion Supervision Regulations.</p>
-    </div>
-  </section>
+  <!-- Home Page -->
+  <div id="home" class="page active">
+    <section>
+      <h2>About Me</h2>
+      <p>I am a graduate student at The University of Hong Kong, pursuing a Master's degree in China Development Studies. My academic interests lie at the intersection of communication, public policy, and data analytics.</p>
+      <br>
+      <p>Previously, I earned my Bachelor's degree in Broadcasting and Television from Dalian University of Technology (985/211), where I developed expertise in computational communication, media production, and social research methods.</p>
+      <br>
+      <p>I have interned at Hunan Broadcasting System and People's Daily Online, gaining hands-on experience in media strategy, content production, and integrated communication campaigns. My research focuses on digital media, aging discourse, and rural education equity.</p>
+    </section>
+  </div>
 
-  <section id="research">
-    <h2>Research Projects</h2>
+  <!-- Research Page -->
+  <div id="research" class="page">
+    <section>
+      <h2>Research Projects</h2>
 
-    <div class="item">
-      <div class="role">Attitudes of Youth Toward Aging Issues on Social Media: An Empirical Study Based on Bilibili Bullet Comments</div>
-      <div class="meta">Jan 2025 – Mar 2025 | Core Member</div>
-      <ul>
-        <li>Built an analytical framework based on Network Agenda Setting (NAS) and Interaction Ritual Chains (IRC) theories to investigate youth cognitive mapping and emotional polarization toward aging topics.</li>
-        <li>Collected and cleaned bullet comment data using Python; conducted text mining via LDA topic modeling and sentiment analysis, identifying core issues such as "economic burden" and "social security" with 58.35% negative sentiment.</li>
-        <li>Conducted in-depth interviews with 11 users to verify the polarizing effect of "meme culture"; proposed a "first-person perspective" content strategy to mitigate intergenerational gaps, offering communication solutions for cross-generational dialogue.</li>
-      </ul>
-    </div>
+      <div class="item">
+        <div class="role">Attitudes of Youth Toward Aging Issues on Social Media: An Empirical Study Based on Bilibili Bullet Comments</div>
+        <div class="meta">Jan 2025 – Mar 2025 | Core Member</div>
+        <ul>
+          <li>Built an analytical framework based on Network Agenda Setting (NAS) and Interaction Ritual Chains (IRC) theories to investigate youth cognitive mapping and emotional polarization toward aging topics.</li>
+          <li>Collected and cleaned bullet comment data using Python; conducted text mining via LDA topic modeling and sentiment analysis, identifying core issues such as "economic burden" and "social security" with 58.35% negative sentiment.</li>
+          <li>Conducted in-depth interviews with 11 users to verify the polarizing effect of "meme culture"; proposed a "first-person perspective" content strategy to mitigate intergenerational gaps.</li>
+        </ul>
+      </div>
 
-    <div class="item">
-      <div class="role">Digital Transformation of Red Culture and Cultural Creative Products</div>
-      <div class="meta">Jan 2023 – Jan 2024 | Core Member</div>
-      <ul>
-        <li>Designed and executed cross-provincial field research based on grounded theory and mixed methods, covering cultural venues and tech enterprises in Beijing, Shenyang, and Dalian; completed 15 in-depth interviews and multiple survey rounds.</li>
-        <li>Proposed a design mechanism of "digital content — multidimensional form — diversified interaction — lightweight operation" for cultural creative products; participated in developing an "AR+NFC" digital school badge featuring 3D modeling, dynamic display, and web-based AR interaction.</li>
-        <li>Second author of the paper "New Opportunities for the Cultural Creative Industry in the Digital Economy Era," published in the national journal China Business (CNKI-indexed); covered by 10+ provincial and municipal media outlets with over 150,000 views.</li>
-      </ul>
-    </div>
+      <div class="item">
+        <div class="role">Digital Transformation of Red Culture and Cultural Creative Products</div>
+        <div class="meta">Jan 2023 – Jan 2024 | Core Member</div>
+        <ul>
+          <li>Designed and executed cross-provincial field research covering cultural venues and tech enterprises in Beijing, Shenyang, and Dalian; completed 15 in-depth interviews and multiple survey rounds.</li>
+          <li>Proposed a design mechanism of "digital content — multidimensional form — diversified interaction — lightweight operation"; participated in developing an "AR+NFC" digital school badge.</li>
+          <li>Second author of a CNKI-indexed paper; project covered by 10+ media outlets with 150,000+ views.</li>
+        </ul>
+      </div>
 
-    <div class="item">
-      <div class="role">Factors Influencing the Development Path of "Internet + Rural Education": The Moderating Role of Mass Media</div>
-      <div class="meta">Jan 2022 – Aug 2022 | Core Member</div>
-      <ul>
-        <li>Proposed the hypothesis that "mass media positively moderates the penetration of online education in rural areas" from the perspectives of communication function theory and educational equity.</li>
-        <li>Participated in designing and executing field research on rural students, collecting 120 valid samples through in-depth interviews and questionnaires.</li>
-        <li>Second author of a paper published in the national journal Computer Campus (Wanfang-indexed), proposing policy recommendations to advance rural education digital transformation and equity.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="item">
+        <div class="role">Factors Influencing "Internet + Rural Education": The Moderating Role of Mass Media</div>
+        <div class="meta">Jan 2022 – Aug 2022 | Core Member</div>
+        <ul>
+          <li>Proposed the hypothesis that mass media positively moderates online education penetration in rural areas.</li>
+          <li>Collected 120 valid samples through field research; second author of a Wanfang-indexed publication.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
-  <section id="internship">
-    <h2>Internship Experience</h2>
+  <!-- Internship Page -->
+  <div id="internship" class="page">
+    <section>
+      <h2>Internship Experience</h2>
 
-    <div class="item">
-      <div class="role">Hunan Broadcasting System (HBS) | International Channel | Director & PR Department | Editor</div>
-      <div class="meta">Sep 2024 – Dec 2024</div>
-      <ul>
-        <li>Designed and executed integrated communication campaigns for the 70th anniversary of Tongdao Dong Autonomous County; planned the "Dong Fashion Night in Changsha" flash mob event, generating nearly 200 million topic views and reposts by official media including the Ministry of Culture and Tourism.</li>
-        <li>Coordinated the historical stage play "The Turning Point at Tongdao," optimizing mobile ideological-political lesson content by proposing a "expert commentary + scenario reenactment" narrative structure to enhance emotional resonance.</li>
-        <li>Produced the International Channel's English promotional brochure centered on "Global Stories, Hunan Perspectives," visualizing the channel's coverage reach across 200+ countries.</li>
-      </ul>
-    </div>
+      <div class="item">
+        <div class="role">Hunan Broadcasting System (HBS) | International Channel | Director & PR Department | Editor</div>
+        <div class="meta">Sep 2024 – Dec 2024</div>
+        <ul>
+          <li>Designed and executed integrated communication campaigns for the 70th anniversary of Tongdao Dong Autonomous County; planned the "Dong Fashion Night in Changsha" flash mob event, generating nearly 200 million topic views.</li>
+          <li>Coordinated the historical stage play "The Turning Point at Tongdao," optimizing mobile ideological-political lesson content with a "expert commentary + scenario reenactment" narrative structure.</li>
+          <li>Produced the International Channel's English promotional brochure visualizing coverage across 200+ countries.</li>
+        </ul>
+      </div>
 
-    <div class="item">
-      <div class="role">People's Daily Online | Mobile Content Department | Editorial Intern</div>
-      <div class="meta">Dec 2023 – Mar 2024</div>
-      <ul>
-        <li>Edited and published 20+ news articles on People's Daily PC portal (including interviews with academicians and university events); produced and reviewed 48 WeChat articles for the Education Channel; created 10+ graphic design works; participated in planning campaigns including "Following General Secretary Xi to See China's Education Power" documentary series.</li>
-        <li>Deeply involved in the 2024 National Two Sessions "Education Power" high-end interview series, completing 6 interview drafts with representatives and committee members; 5 drafts were featured on the homepage of People's Daily's Two Sessions special coverage.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="item">
+        <div class="role">People's Daily Online | Mobile Content Department | Editorial Intern</div>
+        <div class="meta">Dec 2023 – Mar 2024</div>
+        <ul>
+          <li>Edited and published 20+ news articles on People's Daily PC portal; produced 48 WeChat articles for the Education Channel; created 10+ graphic design works.</li>
+          <li>Deeply involved in the 2024 National Two Sessions "Education Power" interview series; 5 of 6 interview drafts featured on the homepage of the Two Sessions special coverage.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
-  <section id="leadership">
-    <h2>Leadership & Extracurricular Activities</h2>
+  <!-- Leadership Page -->
+  <div id="leadership" class="page">
+    <section>
+      <h2>Leadership & Extracurricular Activities</h2>
 
-    <div class="item">
-      <div class="role">China Youth Campus Media | 15th Executive Chairman / (Liaoning) 13th Executive Chairman</div>
-      <div class="meta">Jun 2023 – Jun 2024</div>
-      <ul>
-        <li>Led the organization of the 2024 CYCM Liaoning Annual Conference themed "Integration · Innovation · Development," inviting China News Award winners and China Youth Daily executives; hosted 150+ attendees from 18 universities.</li>
-        <li>Coordinated 129 student media organizations across 21 universities in Liaoning; operated 4 campus media communities; organized 20+ cross-campus collaborative events with cumulative views exceeding 100,000.</li>
-      </ul>
-    </div>
+      <div class="item">
+        <div class="role">China Youth Campus Media | 15th Executive Chairman / (Liaoning) 13th Executive Chairman</div>
+        <div class="meta">Jun 2023 – Jun 2024</div>
+        <ul>
+          <li>Led the 2024 CYCM Liaoning Annual Conference, hosting 150+ attendees from 18 universities with guests including China News Award winners.</li>
+          <li>Coordinated 129 student media organizations across 21 universities; organized 20+ cross-campus events with 100,000+ cumulative views.</li>
+        </ul>
+      </div>
 
-    <div class="item">
-      <div class="role">Dalian University of Technology Converged Media Center | Executive Deputy Director / Student Press Corps President</div>
-      <div class="meta">Sep 2021 – Jun 2024</div>
-      <ul>
-        <li>Led 12 in-depth interview projects featuring high-profile figures including designers of the Wentian space lab module and renowned writers; related articles accumulated 770,000+ views and were republished by People's Daily, Xinhua News Agency, and Guangming Daily.</li>
-        <li>Oversaw converged media strategies for 10+ major university events including academic competitions, cultural ceremonies, and sports tournaments.</li>
-        <li>Managed a 30-member student journalist team; led the team to win 5 national honors including "National Outstanding Influential University Visual Media Team."</li>
-      </ul>
-    </div>
+      <div class="item">
+        <div class="role">Dalian University of Technology Converged Media Center | Executive Deputy Director / Student Press Corps President</div>
+        <div class="meta">Sep 2021 – Jun 2024</div>
+        <ul>
+          <li>Led 12 in-depth interview projects; related articles accumulated 770,000+ views and were republished by People's Daily, Xinhua News Agency, and Guangming Daily.</li>
+          <li>Managed a 30-member student journalist team; led the team to win 5 national honors.</li>
+        </ul>
+      </div>
 
-    <div class="item">
-      <div class="role">School of Humanities, DUT Volunteer Service Center | Director</div>
-      <div class="meta">Sep 2021 – Jun 2024</div>
-      <ul>
-        <li>Organized 50+ volunteer activities over three years with 1,000+ participants and 2,000+ service hours; cultivated multiple municipal and university-level outstanding volunteers.</li>
-        <li>Founded two volunteer teams: "Mulberry Guardian" hospice care and "Silver Wisdom Classroom" digital literacy training for seniors; partnered with Dalian Fourth Hospital for end-of-life psychological support; established community dual-track teaching points for senior smartphone training.</li>
-        <li>Led a summer teaching program in Puyang, Henan, conducting half-month field teaching and producing local industry research reports; project outcomes covered by multiple campus media outlets.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="item">
+        <div class="role">School of Humanities, DUT Volunteer Service Center | Director</div>
+        <div class="meta">Sep 2021 – Jun 2024</div>
+        <ul>
+          <li>Organized 50+ volunteer activities with 1,000+ participants and 2,000+ service hours.</li>
+          <li>Founded "Mulberry Guardian" hospice care and "Silver Wisdom Classroom" digital literacy training for seniors.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
-  <section>
-    <h2>Skills & Honors</h2>
-    
-    <div class="item">
-      <div class="role">Research & Technical Skills</div>
-      <p><strong>Research Methods:</strong> In-depth interviews, surveys, participatory observation, case studies, text analysis (LDA topic modeling, sentiment analysis, word frequency statistics), content analysis.<br>
-      <strong>Data Analysis:</strong> SPSS (regression analysis, reliability testing), Python (web scraping, text processing).<br>
-      <strong>Languages:</strong> CET-6, IELTS 6.5 (Reading 9.0), proficient in academic reading and writing.</p>
-    </div>
-
-    <div class="item">
-      <div class="role">Honors & Awards</div>
-      <p>China Youth Daily 2023–2024 Influential Visual Creator on Campus; China University Online 2023 Outstanding Campus Media Person; DUT Merit Student; DUT Outstanding League Member; National Excellence Award, 6th "Ideological-Political Lessons in My Heart" Micro-Film Competition; Second Prize (Liaoning Division), 15th National College Advertising Art Competition; DUT Academic Excellence Scholarship; DUT Spiritual Civilization Scholarship.</p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Feel free to reach out for collaboration or conversation!</p>
-    <div class="contact-links">
-      <a href="mailto:your.email@163.com">Email</a>
-      <a href="https://github.com/Chenyu-Nie">GitHub</a>
-      <a href="#">LinkedIn</a>
-    </div>
-  </section>
+  <!-- Contact Page -->
+  <div id="contact" class="page">
+    <section style="text-align: center;">
+      <h2>Contact</h2>
+      <p>Feel free to reach out for collaboration, opportunities, or just a friendly chat!</p>
+      <div class="contact-links">
+        <a href="mailto:your.email@163.com">Email</a>
+        <a href="https://github.com/Chenyu-Nie">GitHub</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </section>
+  </div>
 
 </div>
 
 <footer>
   © 2026 Chenyu Nie
 </footer>
+
+<script>
+  function showPage(pageId, btn) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.classList.remove('active'));
+    
+    // Show target page
+    document.getElementById(pageId).classList.add('active');
+    
+    // Update active nav button
+    const buttons = document.querySelectorAll('.nav-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
