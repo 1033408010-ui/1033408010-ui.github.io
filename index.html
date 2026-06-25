@@ -110,14 +110,36 @@ body{
   border-radius:50%;
   object-fit:cover;
   margin:0 auto 18px;
-  border:4px solid #a7f3d0;
+  border:4px solid #a7f3d0; /* 绿色边框 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* 绿色对话框卡片 */
 .card{
   background:white;
   border-radius:14px;
   padding:22px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left; /* 文字左对齐更清晰 */
+  font-size: 15px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+/* 模拟气泡的小尾巴，增加真实感 */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
 }
 
 /* ================= PROJECTS ================= */
@@ -194,15 +216,34 @@ body{
   font-size:26px;
   font-weight:700;
   margin-bottom:20px;
+  text-align: center;
 }
 
 .timeline{
   border-left:3px solid #10b981;
   padding-left:20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .exp-item{
   margin-bottom:26px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* 时间线圆点 */
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #10b981;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #10b981;
 }
 
 .exp-item h3{
@@ -221,6 +262,57 @@ body{
   color:#374151;
   line-height:1.6;
 }
+
+/* ================= CONTACT ================= */
+.contact-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.contact-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #059669;
+  margin-bottom: 15px;
+}
+
+.contact-desc {
+  font-size: 16px;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.contact-btn i {
+  font-size: 16px;
+}
 </style>
 </head>
 
@@ -229,7 +321,7 @@ body{
 <!-- HEADER -->
 <div class="header">
   <h1>Chenyu Nie</h1>
-  <p>Hong Kong University | Media, Data & Computational Social Science</p>
+  Hong Kong University | Media, Data & Computational Social Science
 </div>
 
 <!-- NAV -->
@@ -237,6 +329,7 @@ body{
   <button class="active" onclick="show('about',this)">About</button>
   <button onclick="show('projects',this)">Projects</button>
   <button onclick="show('experience',this)">Experience</button>
+  <button onclick="show('contact',this)">Contact</button>
 </div>
 
 <div class="container">
@@ -245,18 +338,15 @@ body{
 <div id="about" class="section active">
 
   <div class="about-wrap">
-
     <div class="greeting">Hey, nice meeting you!</div>
-
-    <img class="avatar" src="your-photo.jpg">
-
+    <!-- 替换为你自己的头像图片路径 -->
+    <img class="avatar" src="your-photo.jpg" alt="Chenyu Nie">
+    
     <div class="card">
       Hello! I’m <b>Chenyu Nie</b>.  
-      I am currently pursuing a Master’s degree at The University of Hong Kong, focusing on China development,
-      media studies, and computational social science.  
-      My work combines qualitative field research with quantitative data analysis (Python, NLP, LDA, SPSS).
+      I am currently pursuing a Master’s degree at The University of Hong Kong, focusing on China development, media studies, and computational social science.  
+      My work combines qualitative field research with quantitative data analysis (Python, NLP, LDA, SPSS). I love bridging the gap between technology and strategy to create impactful digital solutions.
     </div>
-
   </div>
 
 </div>
@@ -273,68 +363,30 @@ body{
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-
-        <div class="project-title">
-          Youth Attitudes Toward Aging Issues on Social Media
-        </div>
-
+        <div class="project-title">Youth Attitudes Toward Aging Issues on Social Media</div>
         <div class="project-desc">
-          Built analytical framework based on NAS and IRC theory.
-          Applied Python scraping, LDA topic modeling and sentiment analysis on Bilibili danmaku data.
-          Identified 58.35% negative sentiment and strong meme-driven polarization effects.
+          Built analytical framework based on NAS and IRC theory. Applied Python scraping, LDA topic modeling and sentiment analysis on Bilibili danmaku data. Identified 58.35% negative sentiment and strong meme-driven discussions around aging.
         </div>
-
         <div class="tags">
-          <div class="tag">Text Mining</div>
-          <div class="tag">Python</div>
-          <div class="tag">LDA</div>
+          <span class="tag">Python</span>
+          <span class="tag">NLP</span>
+          <span class="tag">LDA</span>
         </div>
-
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-
-        <div class="project-title">
-          Digital Cultural Creativity & AR/NFC Design
-        </div>
-
+        <div class="project-title">Algorithmic Perception of Poverty in Short Videos</div>
         <div class="project-desc">
-          Conducted cross-regional field research across Beijing, Shenyang, and Dalian.
-          Developed AR + NFC digital cultural product with interactive visualization system.
-          Published CNKI-indexed paper with 150k+ media reach.
+          Investigated how short-video platforms shape public perception of poverty through algorithmic curation. Analyzed viewer comments and engagement metrics to understand sentiment polarization.
         </div>
-
         <div class="tags">
-          <div class="tag">AR</div>
-          <div class="tag">UX</div>
-          <div class="tag">Research</div>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Sentiment Analysis</span>
+          <span class="tag">SPSS</span>
         </div>
-
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-img"></div>
-      <div class="project-content">
-
-        <div class="project-title">
-          Internet + Rural Education Study
-        </div>
-
-        <div class="project-desc">
-          Conducted field survey with 120 samples.
-          Studied media moderation effect on rural education access and inequality.
-        </div>
-
-        <div class="tags">
-          <div class="tag">Survey</div>
-          <div class="tag">SPSS</div>
-          <div class="tag">Policy</div>
-        </div>
-
       </div>
     </div>
 
@@ -345,34 +397,46 @@ body{
 <!-- ================= EXPERIENCE ================= -->
 <div id="experience" class="section">
 
-  <div class="exp-title">Experience & Education</div>
-
+  <h2 class="exp-title">Experience & Education</h2>
   <div class="timeline">
 
     <div class="exp-item">
-      <h3>Hong Kong University</h3>
-      <div class="exp-meta">MSc China Development Studies | 2025–Present</div>
-    </div>
-
-    <div class="exp-item">
-      <h3>Dalian University of Technology</h3>
-      <div class="exp-meta">BA Broadcasting & Television | 2021–2025</div>
-    </div>
-
-    <div class="exp-item">
-      <h3>Hunan Broadcasting System</h3>
-      <div class="exp-meta">Director Intern | 2024</div>
+      <h3>Graduate Student Supervisor @ Laurie Burns McRobbie Serve IT Clinic</h3>
+      <div class="exp-meta">Aug 2025 – Present | California, USA</div>
       <div class="exp-desc">
-        Designed integrated communication campaign for Tongdao 70th anniversary,
-        achieving nearly 200M media exposure.
+        Leading a team of graduate students to provide IT support for local non-profits. Managed project timelines, client communication, and technical troubleshooting for over 15 organizations.
       </div>
     </div>
 
     <div class="exp-item">
-      <h3>People’s Daily Online</h3>
-      <div class="exp-meta">Editorial Intern | 2023–2024</div>
+      <h3>Business Analysis Intern @ Xunda Corp</h3>
+      <div class="exp-meta">May 2025 – Aug 2025 | California, USA</div>
       <div class="exp-desc">
-        Produced news articles and multimedia content for national-level media projects.
+        Conducted market research and data visualization for product development. Collaborated with cross-functional teams to optimize business processes using SQL and Tableau.
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <h3>Graduate Assistant, MSIS Core @ Kelley School of Business</h3>
+      <div class="exp-meta">Aug 2024 – Present | Indiana University</div>
+      <div class="exp-desc">
+        Assisted professors in teaching MIS courses. Graded assignments, held office hours, and facilitated classroom discussions on digital transformation and cloud technology.
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <h3>M.S. in Information Systems</h3>
+      <div class="exp-meta">Indiana University Bloomington | 2024–2025</div>
+      <div class="exp-desc">
+        Focused on AI, Cloud Technology, and Business-driven innovation. GPA: 3.85/4.0.
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <h3>B.S. in Informatics</h3>
+      <div class="exp-meta">Indiana University Bloomington | 2019–2024</div>
+      <div class="exp-desc">
+        Double major in Informatics and Psychology. Graduated with honors.
       </div>
     </div>
 
@@ -380,15 +444,40 @@ body{
 
 </div>
 
+<!-- ================= CONTACT ================= -->
+<div id="contact" class="section contact-section">
+
+  <h2 class="contact-title">Let's get in touch!</h2>
+  <p class="contact-desc">
+    I love connecting with people interested in technology, data, and design. Whether it's collaboration, opportunity, or just a chat — feel free to reach out!
+  
+  
+  <div class="contact-buttons">
+    <a href="mailto:chenyu.nie@example.com" class="contact-btn">
+      <i>📧</i> Email Me
+    </a>
+    <a href="https://linkedin.com/in/chenyu-nie" target="_blank" class="contact-btn">
+      <i>🔗</i> LinkedIn
+    </a>
+    <a href="https://github.com/chenyu-nie" target="_blank" class="contact-btn">
+      <i>💻</i> GitHub
+    </a>
+  </div>
+
+</div>
+
 </div>
 
 <script>
-function show(id,btn){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+function show(id, el) {
+  // 隐藏所有 section
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  // 显示目标 section
   document.getElementById(id).classList.add('active');
-
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  
+  // 更新导航按钮状态
+  document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+  el.classList.add('active');
 }
 </script>
 
