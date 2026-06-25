@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chenyu Nie - Portfolio</title>
+<title>Chenyu Nie</title>
 
 <style>
 *{
@@ -20,7 +20,7 @@ body{
 
 /* ================= HEADER ================= */
 .header{
-  background: linear-gradient(135deg,#3fc1a9,#36b3b0);
+  background:linear-gradient(135deg,#3fc1a9,#36b3b0);
   color:white;
   text-align:center;
   padding:55px 20px 75px;
@@ -33,8 +33,8 @@ body{
 
 .header p{
   font-size:18px;
-  opacity:0.95;
   margin-top:8px;
+  opacity:0.95;
 }
 
 /* ================= NAV ================= */
@@ -58,7 +58,6 @@ body{
   padding:8px 12px;
   border-radius:10px;
   transition:.25s;
-  color:#374151;
   position:relative;
 }
 
@@ -76,28 +75,22 @@ body{
   content:"";
   position:absolute;
   bottom:-6px;
-  left:20%;
-  width:60%;
+  left:18%;
+  width:64%;
   height:3px;
-  border-radius:10px;
   background:linear-gradient(90deg,#10b981,#06b6d4);
+  border-radius:10px;
 }
 
 /* ================= CONTAINER ================= */
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:40px auto;
   padding:0 20px;
 }
 
-/* ================= SECTIONS ================= */
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
+.section{display:none;}
+.section.active{display:block;}
 
 /* ================= ABOUT ================= */
 .about-wrap{
@@ -108,7 +101,7 @@ body{
   font-size:22px;
   font-weight:600;
   color:#059669;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .avatar{
@@ -116,17 +109,14 @@ body{
   height:170px;
   border-radius:50%;
   object-fit:cover;
-  margin:0 auto 20px;
-  display:block;
+  margin:0 auto 18px;
   border:4px solid #a7f3d0;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 .card{
   background:white;
   border-radius:14px;
-  padding:24px;
-  margin-top:20px;
+  padding:22px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
 }
 
@@ -138,12 +128,11 @@ body{
 }
 
 .search-bar input{
-  width:420px;
+  width:450px;
   padding:12px 16px;
   border-radius:999px;
   border:2px solid #10b981;
   outline:none;
-  font-size:14px;
 }
 
 .projects-grid{
@@ -165,7 +154,7 @@ body{
 }
 
 .project-img{
-  height:160px;
+  height:170px;
   background:#e5e7eb;
 }
 
@@ -176,17 +165,17 @@ body{
 .project-title{
   font-size:18px;
   font-weight:600;
-  margin-bottom:6px;
 }
 
 .project-desc{
   font-size:14px;
+  margin-top:6px;
   color:#4b5563;
-  margin-bottom:12px;
   line-height:1.5;
 }
 
 .tags{
+  margin-top:10px;
   display:flex;
   gap:8px;
   flex-wrap:wrap;
@@ -202,10 +191,9 @@ body{
 
 /* ================= EXPERIENCE ================= */
 .exp-title{
-  font-size:28px;
+  font-size:26px;
   font-weight:700;
   margin-bottom:20px;
-  color:#111827;
 }
 
 .timeline{
@@ -214,7 +202,7 @@ body{
 }
 
 .exp-item{
-  margin-bottom:25px;
+  margin-bottom:26px;
 }
 
 .exp-item h3{
@@ -225,7 +213,7 @@ body{
 .exp-meta{
   font-size:13px;
   color:#6b7280;
-  margin:4px 0 8px;
+  margin:4px 0 6px;
 }
 
 .exp-desc{
@@ -241,7 +229,7 @@ body{
 <!-- HEADER -->
 <div class="header">
   <h1>Chenyu Nie</h1>
-  <p>Information Systems | AI & Data Analytics | Research & Product Thinking</p>
+  <p>Hong Kong University | Media, Data & Computational Social Science</p>
 </div>
 
 <!-- NAV -->
@@ -249,13 +237,13 @@ body{
   <button class="active" onclick="show('about',this)">About</button>
   <button onclick="show('projects',this)">Projects</button>
   <button onclick="show('experience',this)">Experience</button>
-  <button onclick="show('contact',this)">Contact</button>
 </div>
 
 <div class="container">
 
 <!-- ================= ABOUT ================= -->
 <div id="about" class="section active">
+
   <div class="about-wrap">
 
     <div class="greeting">Hey, nice meeting you!</div>
@@ -263,19 +251,21 @@ body{
     <img class="avatar" src="your-photo.jpg">
 
     <div class="card">
-      Hello! I’m <b>Chenyu Nie</b>, a passionate Information Systems student focusing on AI,
-      data analytics, and system design. I enjoy turning data into actionable insights and building
-      impactful digital products.
+      Hello! I’m <b>Chenyu Nie</b>.  
+      I am currently pursuing a Master’s degree at The University of Hong Kong, focusing on China development,
+      media studies, and computational social science.  
+      My work combines qualitative field research with quantitative data analysis (Python, NLP, LDA, SPSS).
     </div>
 
   </div>
+
 </div>
 
 <!-- ================= PROJECTS ================= -->
 <div id="projects" class="section">
 
   <div class="search-bar">
-    <input type="text" placeholder="Search by title or category...">
+    <input placeholder="Search by title or category...">
   </div>
 
   <div class="projects-grid">
@@ -283,35 +273,76 @@ body{
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-        <div class="project-title">AI-Powered Staffing System</div>
+
+        <div class="project-title">
+          Youth Attitudes Toward Aging Issues on Social Media
+        </div>
+
         <div class="project-desc">
-          Optimized engineer allocation using ML-based matching and Flask backend system.
+          Built analytical framework based on NAS and IRC theory.
+          Applied Python scraping, LDA topic modeling and sentiment analysis on Bilibili danmaku data.
+          Identified 58.35% negative sentiment and strong meme-driven polarization effects.
         </div>
+
         <div class="tags">
-          <div class="tag">AI</div>
-          <div class="tag">Full-Stack</div>
+          <div class="tag">Text Mining</div>
+          <div class="tag">Python</div>
+          <div class="tag">LDA</div>
         </div>
+
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-        <div class="project-title">Seoul Bike Demand Analysis</div>
+
+        <div class="project-title">
+          Digital Cultural Creativity & AR/NFC Design
+        </div>
+
         <div class="project-desc">
-          Analyzed weather impact on bike usage using regression and VIF methods.
+          Conducted cross-regional field research across Beijing, Shenyang, and Dalian.
+          Developed AR + NFC digital cultural product with interactive visualization system.
+          Published CNKI-indexed paper with 150k+ media reach.
         </div>
+
         <div class="tags">
-          <div class="tag">Data</div>
-          <div class="tag">Python</div>
+          <div class="tag">AR</div>
+          <div class="tag">UX</div>
+          <div class="tag">Research</div>
         </div>
+
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img"></div>
+      <div class="project-content">
+
+        <div class="project-title">
+          Internet + Rural Education Study
+        </div>
+
+        <div class="project-desc">
+          Conducted field survey with 120 samples.
+          Studied media moderation effect on rural education access and inequality.
+        </div>
+
+        <div class="tags">
+          <div class="tag">Survey</div>
+          <div class="tag">SPSS</div>
+          <div class="tag">Policy</div>
+        </div>
+
       </div>
     </div>
 
   </div>
+
 </div>
 
-<!-- ================= EXPERIENCE (merged) ================= -->
+<!-- ================= EXPERIENCE ================= -->
 <div id="experience" class="section">
 
   <div class="exp-title">Experience & Education</div>
@@ -319,44 +350,32 @@ body{
   <div class="timeline">
 
     <div class="exp-item">
-      <h3>Graduate Assistant - Kelley School of Business</h3>
-      <div class="exp-meta">2024 – Present | Indiana University</div>
+      <h3>Hong Kong University</h3>
+      <div class="exp-meta">MSc China Development Studies | 2025–Present</div>
+    </div>
+
+    <div class="exp-item">
+      <h3>Dalian University of Technology</h3>
+      <div class="exp-meta">BA Broadcasting & Television | 2021–2025</div>
+    </div>
+
+    <div class="exp-item">
+      <h3>Hunan Broadcasting System</h3>
+      <div class="exp-meta">Director Intern | 2024</div>
       <div class="exp-desc">
-        Supporting MSIS core courses, data analysis research and academic projects.
+        Designed integrated communication campaign for Tongdao 70th anniversary,
+        achieving nearly 200M media exposure.
       </div>
     </div>
 
     <div class="exp-item">
-      <h3>Business Analyst Intern - Xunda Corp</h3>
-      <div class="exp-meta">2025 | California, USA</div>
+      <h3>People’s Daily Online</h3>
+      <div class="exp-meta">Editorial Intern | 2023–2024</div>
       <div class="exp-desc">
-        Conducted market research and supported product strategy optimization.
+        Produced news articles and multimedia content for national-level media projects.
       </div>
     </div>
 
-    <div class="exp-item">
-      <h3>M.S. Information Systems</h3>
-      <div class="exp-meta">Indiana University | 2024–2025</div>
-    </div>
-
-    <div class="exp-item">
-      <h3>B.S. Informatics</h3>
-      <div class="exp-meta">Indiana University | 2019–2024</div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ================= CONTACT ================= -->
-<div id="contact" class="section">
-
-  <div class="card">
-    <h2>Let’s get in touch</h2>
-    <p style="margin-top:10px;color:#4b5563">
-      Email: xxx@xxx.com<br>
-      GitHub: github.com/xxx
-    </p>
   </div>
 
 </div>
