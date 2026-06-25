@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal Homepage</title>
+<title>Chenyu Nie - Portfolio</title>
 
 <style>
 *{
@@ -29,12 +29,12 @@ body{
 .header h1{
   font-size:48px;
   font-weight:700;
-  margin-bottom:10px;
 }
 
 .header p{
   font-size:18px;
   opacity:0.95;
+  margin-top:8px;
 }
 
 /* ================= NAV ================= */
@@ -51,39 +51,22 @@ body{
 }
 
 .nav button{
-  position:relative;
   border:none;
   background:none;
   cursor:pointer;
   font-size:16px;
   padding:8px 12px;
-  color:#374151;
-  transition:all .25s ease;
   border-radius:10px;
+  transition:.25s;
+  color:#374151;
+  position:relative;
 }
 
-/* hover float + glow bg */
 .nav button:hover{
   transform:translateY(-2px);
   color:#10b981;
 }
 
-.nav button:hover::before{
-  opacity:1;
-}
-
-.nav button::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,#ecfeff,#d1fae5);
-  opacity:0;
-  border-radius:10px;
-  z-index:-1;
-  transition:.25s ease;
-}
-
-/* active state */
 .nav button.active{
   color:#059669;
   font-weight:600;
@@ -92,136 +75,163 @@ body{
 .nav button.active::after{
   content:"";
   position:absolute;
-  left:18%;
   bottom:-6px;
-  width:64%;
+  left:20%;
+  width:60%;
   height:3px;
   border-radius:10px;
   background:linear-gradient(90deg,#10b981,#06b6d4);
-  animation:underline .25s ease;
 }
 
-@keyframes underline{
-  from{width:0;left:50%;}
-  to{width:64%;left:18%;}
-}
-
-/* click feedback */
-.nav button:active{
-  transform:scale(0.95);
-}
-
-/* ================= CONTENT ================= */
+/* ================= CONTAINER ================= */
 .container{
-  max-width:900px;
+  max-width:1000px;
   margin:40px auto;
   padding:0 20px;
 }
 
-/* sections */
+/* ================= SECTIONS ================= */
 .section{
   display:none;
-  opacity:0;
-  transform:translateY(10px);
-  transition:all .3s ease;
 }
 
 .section.active{
   display:block;
-  opacity:1;
-  transform:translateY(0);
 }
 
-/* ================= AVATAR ================= */
+/* ================= ABOUT ================= */
+.about-wrap{
+  text-align:center;
+}
+
+.greeting{
+  font-size:22px;
+  font-weight:600;
+  color:#059669;
+  margin-bottom:20px;
+}
+
 .avatar{
-  width:160px;
-  height:160px;
+  width:170px;
+  height:170px;
   border-radius:50%;
   object-fit:cover;
-  display:block;
   margin:0 auto 20px;
+  display:block;
   border:4px solid #a7f3d0;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* ================= CARD ================= */
 .card{
   background:white;
   border-radius:14px;
   padding:24px;
+  margin-top:20px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
-  margin-bottom:18px;
-  transition:all .25s ease;
-  position:relative;
-  overflow:hidden;
 }
 
-/* hover float */
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 45px rgba(16,185,129,0.12);
+/* ================= PROJECTS ================= */
+.search-bar{
+  display:flex;
+  justify-content:center;
+  margin-bottom:25px;
 }
 
-/* glow border */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
+.search-bar input{
+  width:420px;
+  padding:12px 16px;
+  border-radius:999px;
+  border:2px solid #10b981;
+  outline:none;
+  font-size:14px;
+}
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.project-card{
+  background:white;
   border-radius:14px;
-  padding:1px;
-  background:linear-gradient(135deg,transparent,#10b98133,#06b6d433);
-  opacity:0;
-  transition:.25s ease;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  transition:.25s;
 }
 
-.card:hover::before{
-  opacity:1;
+.project-card:hover{
+  transform:translateY(-6px);
 }
 
-/* text */
-.title{
-  font-size:20px;
+.project-img{
+  height:160px;
+  background:#e5e7eb;
+}
+
+.project-content{
+  padding:18px;
+}
+
+.project-title{
+  font-size:18px;
   font-weight:600;
   margin-bottom:6px;
 }
 
-.meta{
+.project-desc{
+  font-size:14px;
+  color:#4b5563;
+  margin-bottom:12px;
+  line-height:1.5;
+}
+
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  background:#10b981;
+  color:white;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:999px;
+}
+
+/* ================= EXPERIENCE ================= */
+.exp-title{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:#111827;
+}
+
+.timeline{
+  border-left:3px solid #10b981;
+  padding-left:20px;
+}
+
+.exp-item{
+  margin-bottom:25px;
+}
+
+.exp-item h3{
+  font-size:18px;
+  font-weight:600;
+}
+
+.exp-meta{
   font-size:13px;
   color:#6b7280;
-  margin-bottom:10px;
+  margin:4px 0 8px;
 }
 
-.desc{
+.exp-desc{
   font-size:14px;
-  line-height:1.7;
   color:#374151;
-}
-
-/* ================= BUTTONS ================= */
-.btns{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:20px;
-}
-
-.btn{
-  background:linear-gradient(135deg,#10b981,#06b6d4);
-  color:white;
-  border:none;
-  padding:10px 16px;
-  border-radius:999px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 20px rgba(16,185,129,0.25);
-}
-
-.btn:active{
-  transform:scale(0.96);
+  line-height:1.6;
 }
 </style>
 </head>
@@ -230,8 +240,8 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <h1>你的名字</h1>
-  <p>HKU | China Development Studies | Computational Social Science</p>
+  <h1>Chenyu Nie</h1>
+  <p>Information Systems | AI & Data Analytics | Research & Product Thinking</p>
 </div>
 
 <!-- NAV -->
@@ -239,128 +249,126 @@ body{
   <button class="active" onclick="show('about',this)">About</button>
   <button onclick="show('projects',this)">Projects</button>
   <button onclick="show('experience',this)">Experience</button>
-  <button onclick="show('education',this)">Education</button>
   <button onclick="show('contact',this)">Contact</button>
 </div>
 
-<!-- CONTENT -->
 <div class="container">
 
-  <!-- ABOUT -->
-  <div id="about" class="section active">
-    <img src="your-photo.jpg" class="avatar">
+<!-- ================= ABOUT ================= -->
+<div id="about" class="section active">
+  <div class="about-wrap">
+
+    <div class="greeting">Hey, nice meeting you!</div>
+
+    <img class="avatar" src="your-photo.jpg">
 
     <div class="card">
-      <div class="desc">
-        Hello! I am a Master’s student at The University of Hong Kong.
-        My research focuses on computational social science, media studies,
-        and data-driven policy analysis using Python, NLP, and statistical modeling.
-      </div>
-    </div>
-  </div>
-
-  <!-- PROJECTS -->
-  <div id="projects" class="section">
-
-    <div class="card">
-      <div class="title">Youth Attitudes Toward Aging Issues on Social Media</div>
-      <div class="meta">2025.01 – 2025.03</div>
-      <div class="desc">
-        Built NAS + IRC framework. Used Python for data scraping from Bilibili,
-        applied LDA topic modeling and sentiment analysis. Found 58.35% negative sentiment
-        and strong meme-driven polarization effects.
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">Digital Transformation of Cultural Creativity</div>
-      <div class="meta">2023 – 2024</div>
-      <div class="desc">
-        Conducted cross-regional field research and developed AR/NFC interactive cultural product.
-        Published CNKI-indexed paper with over 150,000 media impressions.
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="title">Internet + Rural Education Research</div>
-      <div class="meta">2022</div>
-      <div class="desc">
-        120-sample field study with media moderation model. Provided policy recommendations
-        for digital education inequality.
-      </div>
+      Hello! I’m <b>Chenyu Nie</b>, a passionate Information Systems student focusing on AI,
+      data analytics, and system design. I enjoy turning data into actionable insights and building
+      impactful digital products.
     </div>
 
   </div>
+</div>
 
-  <!-- EXPERIENCE -->
-  <div id="experience" class="section">
+<!-- ================= PROJECTS ================= -->
+<div id="projects" class="section">
 
-    <div class="card">
-      <div class="title">Hunan Broadcasting System</div>
-      <div class="meta">Director / PR Intern · 2024</div>
-      <div class="desc">
-        Designed integrated communication campaign for county anniversary event,
-        achieving ~200M media exposure.
+  <div class="search-bar">
+    <input type="text" placeholder="Search by title or category...">
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-img"></div>
+      <div class="project-content">
+        <div class="project-title">AI-Powered Staffing System</div>
+        <div class="project-desc">
+          Optimized engineer allocation using ML-based matching and Flask backend system.
+        </div>
+        <div class="tags">
+          <div class="tag">AI</div>
+          <div class="tag">Full-Stack</div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="title">People’s Daily Online</div>
-      <div class="meta">Editorial Intern · 2023–2024</div>
-      <div class="desc">
-        Produced news articles, multimedia content, and participated in national-level editorial projects.
+    <div class="project-card">
+      <div class="project-img"></div>
+      <div class="project-content">
+        <div class="project-title">Seoul Bike Demand Analysis</div>
+        <div class="project-desc">
+          Analyzed weather impact on bike usage using regression and VIF methods.
+        </div>
+        <div class="tags">
+          <div class="tag">Data</div>
+          <div class="tag">Python</div>
+        </div>
       </div>
     </div>
 
   </div>
+</div>
 
-  <!-- EDUCATION -->
-  <div id="education" class="section">
+<!-- ================= EXPERIENCE (merged) ================= -->
+<div id="experience" class="section">
 
-    <div class="card">
-      <div class="title">The University of Hong Kong</div>
-      <div class="meta">M.A. China Development Studies | 2025–Present</div>
+  <div class="exp-title">Experience & Education</div>
+
+  <div class="timeline">
+
+    <div class="exp-item">
+      <h3>Graduate Assistant - Kelley School of Business</h3>
+      <div class="exp-meta">2024 – Present | Indiana University</div>
+      <div class="exp-desc">
+        Supporting MSIS core courses, data analysis research and academic projects.
+      </div>
     </div>
 
-    <div class="card">
-      <div class="title">Dalian University of Technology</div>
-      <div class="meta">B.A. Broadcasting & Television | 2021–2025</div>
+    <div class="exp-item">
+      <h3>Business Analyst Intern - Xunda Corp</h3>
+      <div class="exp-meta">2025 | California, USA</div>
+      <div class="exp-desc">
+        Conducted market research and supported product strategy optimization.
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <h3>M.S. Information Systems</h3>
+      <div class="exp-meta">Indiana University | 2024–2025</div>
+    </div>
+
+    <div class="exp-item">
+      <h3>B.S. Informatics</h3>
+      <div class="exp-meta">Indiana University | 2019–2024</div>
     </div>
 
   </div>
 
-  <!-- CONTACT -->
-  <div id="contact" class="section">
+</div>
 
-    <div class="card">
-      <div class="desc">
-        Email: xxx@163.com<br>
-        Phone: 139xxxxxxx<br>
-        GitHub: github.com/xxx
-      </div>
+<!-- ================= CONTACT ================= -->
+<div id="contact" class="section">
 
-      <div class="btns">
-        <button class="btn">Email Me</button>
-        <button class="btn">LinkedIn</button>
-        <button class="btn">GitHub</button>
-      </div>
-    </div>
-
+  <div class="card">
+    <h2>Let’s get in touch</h2>
+    <p style="margin-top:10px;color:#4b5563">
+      Email: xxx@xxx.com<br>
+      GitHub: github.com/xxx
+    </p>
   </div>
+
+</div>
 
 </div>
 
 <script>
-function show(id, btn){
-
-  document.querySelectorAll('.section')
-    .forEach(s => s.classList.remove('active'));
-
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.nav button')
-    .forEach(b => b.classList.remove('active'));
-
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
 }
 </script>
