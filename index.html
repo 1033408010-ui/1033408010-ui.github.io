@@ -18,12 +18,12 @@ body{
   color:#1f2937;
 }
 
-/* ===== HERO HEADER ===== */
+/* ================= HEADER ================= */
 .header{
   background: linear-gradient(135deg,#3fc1a9,#36b3b0);
   color:white;
   text-align:center;
-  padding:50px 20px 70px;
+  padding:55px 20px 75px;
 }
 
 .header h1{
@@ -37,7 +37,7 @@ body{
   opacity:0.95;
 }
 
-/* ===== NAV (fixed) ===== */
+/* ================= NAV ================= */
 .nav{
   position:sticky;
   top:0;
@@ -47,29 +47,71 @@ body{
   justify-content:center;
   gap:40px;
   padding:14px 0;
-  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
 }
 
 .nav button{
-  background:none;
+  position:relative;
   border:none;
-  font-size:16px;
-  color:#374151;
+  background:none;
   cursor:pointer;
-  padding:6px 10px;
-  transition:.2s;
+  font-size:16px;
+  padding:8px 12px;
+  color:#374151;
+  transition:all .25s ease;
+  border-radius:10px;
 }
 
+/* hover float + glow bg */
 .nav button:hover{
+  transform:translateY(-2px);
   color:#10b981;
 }
 
+.nav button:hover::before{
+  opacity:1;
+}
+
+.nav button::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,#ecfeff,#d1fae5);
+  opacity:0;
+  border-radius:10px;
+  z-index:-1;
+  transition:.25s ease;
+}
+
+/* active state */
 .nav button.active{
-  color:#10b981;
-  border-bottom:2px solid #10b981;
+  color:#059669;
+  font-weight:600;
 }
 
-/* ===== CONTENT ===== */
+.nav button.active::after{
+  content:"";
+  position:absolute;
+  left:18%;
+  bottom:-6px;
+  width:64%;
+  height:3px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#10b981,#06b6d4);
+  animation:underline .25s ease;
+}
+
+@keyframes underline{
+  from{width:0;left:50%;}
+  to{width:64%;left:18%;}
+}
+
+/* click feedback */
+.nav button:active{
+  transform:scale(0.95);
+}
+
+/* ================= CONTENT ================= */
 .container{
   max-width:900px;
   margin:40px auto;
@@ -79,19 +121,18 @@ body{
 /* sections */
 .section{
   display:none;
-  animation:fade .25s ease;
+  opacity:0;
+  transform:translateY(10px);
+  transition:all .3s ease;
 }
 
 .section.active{
   display:block;
+  opacity:1;
+  transform:translateY(0);
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* ===== ABOUT ===== */
+/* ================= AVATAR ================= */
 .avatar{
   width:160px;
   height:160px;
@@ -103,25 +144,51 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
+/* ================= CARD ================= */
 .card{
   background:white;
   border-radius:14px;
   padding:24px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
   margin-bottom:18px;
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
 }
 
+/* hover float */
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(16,185,129,0.12);
+}
+
+/* glow border */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  padding:1px;
+  background:linear-gradient(135deg,transparent,#10b98133,#06b6d433);
+  opacity:0;
+  transition:.25s ease;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+/* text */
 .title{
-  font-size:22px;
+  font-size:20px;
   font-weight:600;
-  margin-bottom:10px;
-  color:#111827;
+  margin-bottom:6px;
 }
 
 .meta{
-  font-size:14px;
+  font-size:13px;
   color:#6b7280;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .desc{
@@ -130,21 +197,31 @@ body{
   color:#374151;
 }
 
-/* contact buttons */
+/* ================= BUTTONS ================= */
 .btns{
   display:flex;
-  gap:12px;
   justify-content:center;
+  gap:12px;
   margin-top:20px;
 }
 
 .btn{
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  color:white;
+  border:none;
   padding:10px 16px;
   border-radius:999px;
-  border:none;
   cursor:pointer;
-  background:#10b981;
-  color:white;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(16,185,129,0.25);
+}
+
+.btn:active{
+  transform:scale(0.96);
 }
 </style>
 </head>
@@ -154,7 +231,7 @@ body{
 <!-- HEADER -->
 <div class="header">
   <h1>你的名字</h1>
-  <p>HKU | China Development Studies | Data & Communication Research</p>
+  <p>HKU | China Development Studies | Computational Social Science</p>
 </div>
 
 <!-- NAV -->
@@ -175,8 +252,9 @@ body{
 
     <div class="card">
       <div class="desc">
-        Hello! I am a Master’s student at The University of Hong Kong, focusing on communication research,
-        computational social science, and data-driven policy analysis.
+        Hello! I am a Master’s student at The University of Hong Kong.
+        My research focuses on computational social science, media studies,
+        and data-driven policy analysis using Python, NLP, and statistical modeling.
       </div>
     </div>
   </div>
@@ -188,8 +266,9 @@ body{
       <div class="title">Youth Attitudes Toward Aging Issues on Social Media</div>
       <div class="meta">2025.01 – 2025.03</div>
       <div class="desc">
-        Built NAS + IRC framework. Used Python for Bilibili data scraping, LDA topic modeling and sentiment analysis.
-        Identified 58.35% negative sentiment and strong meme-driven polarization effects.
+        Built NAS + IRC framework. Used Python for data scraping from Bilibili,
+        applied LDA topic modeling and sentiment analysis. Found 58.35% negative sentiment
+        and strong meme-driven polarization effects.
       </div>
     </div>
 
@@ -197,7 +276,8 @@ body{
       <div class="title">Digital Transformation of Cultural Creativity</div>
       <div class="meta">2023 – 2024</div>
       <div class="desc">
-        Cross-regional field study + AR/NFC product development. Published CNKI paper and media coverage over 150k views.
+        Conducted cross-regional field research and developed AR/NFC interactive cultural product.
+        Published CNKI-indexed paper with over 150,000 media impressions.
       </div>
     </div>
 
@@ -205,7 +285,8 @@ body{
       <div class="title">Internet + Rural Education Research</div>
       <div class="meta">2022</div>
       <div class="desc">
-        120 sample field survey + media moderation hypothesis. Published in academic journal with policy implications.
+        120-sample field study with media moderation model. Provided policy recommendations
+        for digital education inequality.
       </div>
     </div>
 
@@ -216,17 +297,18 @@ body{
 
     <div class="card">
       <div class="title">Hunan Broadcasting System</div>
-      <div class="meta">Director / PR Intern | 2024</div>
+      <div class="meta">Director / PR Intern · 2024</div>
       <div class="desc">
-        Led integrated communication campaign for 70th anniversary of Tongdao County. Achieved ~200M exposure event.
+        Designed integrated communication campaign for county anniversary event,
+        achieving ~200M media exposure.
       </div>
     </div>
 
     <div class="card">
       <div class="title">People’s Daily Online</div>
-      <div class="meta">Editorial Intern | 2023–2024</div>
+      <div class="meta">Editorial Intern · 2023–2024</div>
       <div class="desc">
-        Produced news articles, WeChat content, and participated in national Two Sessions reporting projects.
+        Produced news articles, multimedia content, and participated in national-level editorial projects.
       </div>
     </div>
 
@@ -242,7 +324,7 @@ body{
 
     <div class="card">
       <div class="title">Dalian University of Technology</div>
-      <div class="meta">B.A. Broadcasting & Television | 2021–2025 | GPA 89.2</div>
+      <div class="meta">B.A. Broadcasting & Television | 2021–2025</div>
     </div>
 
   </div>
@@ -269,15 +351,15 @@ body{
 </div>
 
 <script>
-function show(id,btn){
+function show(id, btn){
 
   document.querySelectorAll('.section')
-    .forEach(s=>s.classList.remove('active'));
+    .forEach(s => s.classList.remove('active'));
 
   document.getElementById(id).classList.add('active');
 
   document.querySelectorAll('.nav button')
-    .forEach(b=>b.classList.remove('active'));
+    .forEach(b => b.classList.remove('active'));
 
   btn.classList.add('active');
 }
