@@ -70,6 +70,18 @@ body{
 
 .nav button.active{
   color:#059669;
+  position:relative;
+}
+
+.nav button.active::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:20%;
+  width:60%;
+  height:3px;
+  background:linear-gradient(90deg,#10b981,#06b6d4);
+  border-radius:10px;
 }
 
 /* SECTIONS */
@@ -92,7 +104,7 @@ body{
   transform:translateY(0);
 }
 
-/* ================= ABOUT (REFINED SMALLER CARD STYLE) ================= */
+/* ================= ABOUT (ENLARGED) ================= */
 .about-center{
   display:flex;
   flex-direction:column;
@@ -104,16 +116,16 @@ body{
   font-size:32px;
   font-weight:800;
   color:#1f8f6a;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
 .avatar{
-  width:150px;
-  height:150px;
+  width:190px;
+  height:190px;
   border-radius:50%;
   object-fit:cover;
   border:4px solid #a7f3d0;
-  margin-bottom:12px;
+  margin-bottom:14px;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
   transition:0.35s;
 }
@@ -123,14 +135,15 @@ body{
   box-shadow:0 18px 40px rgba(16,185,129,0.25);
 }
 
+/* enlarged bubble */
 .bubble{
-  max-width:520px;
+  max-width:620px;
   background:#fff;
-  padding:18px;
+  padding:24px 28px;
   border-radius:16px;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  font-size:14.5px;
-  line-height:1.65;
+  font-size:15px;
+  line-height:1.7;
   text-align:left;
   transition:0.3s;
 }
@@ -141,7 +154,7 @@ body{
   box-shadow:0 18px 45px rgba(16,185,129,0.25);
 }
 
-/* ================= PROJECTS (FLOAT EFFECT) ================= */
+/* ================= PROJECTS (NO SEARCH BOX) ================= */
 .projects{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -197,7 +210,7 @@ body{
   border-radius:999px;
 }
 
-/* ================= EXPERIENCE (FULL FROM YOUR CV) ================= */
+/* ================= EXPERIENCE (EXPANDED FROM DOCUMENT) ================= */
 .exp-title{
   text-align:center;
   font-size:26px;
@@ -245,7 +258,7 @@ body{
   color:#374151;
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
 .contact{
   text-align:center;
   padding:60px 20px;
@@ -301,14 +314,15 @@ body{
     <img class="avatar" src="your-photo.jpg">
 
     <div class="bubble">
-      Hi, I’m <b>Chenyu Nie</b>, a Master’s student at the University of Hong Kong specializing in China Development Studies.  
-      I focus on media studies, computational social science, and data-driven communication research, especially public opinion and cultural dissemination.
+      Hi, I'm <b>Chenyu Nie</b>, a Master's student at the University of Hong Kong.  
+      I focus on computational social science, media analytics, and digital communication research.  
+      My work explores how data and media shape public opinion and cultural expression.
     </div>
 
   </div>
 </div>
 
-<!-- PROJECTS (UNCHANGED STRUCTURE) -->
+<!-- PROJECTS (NO SEARCH BOX) -->
 <div id="projects" class="section">
 
   <div class="projects">
@@ -362,7 +376,7 @@ body{
       <div class="project-img"></div>
       <div class="project-body">
         <div class="project-title">News Production Practice</div>
-        <div class="project-desc">Editorial work at People’s Daily Online.</div>
+        <div class="project-desc">Editorial work at People's Daily Online.</div>
         <div class="tags"><span class="tag">Journalism</span><span class="tag">Editing</span></div>
       </div>
     </div>
@@ -370,53 +384,51 @@ body{
   </div>
 </div>
 
-<!-- EXPERIENCE (FULL CV STRUCTURE) -->
+<!-- EXPERIENCE (EXPANDED) -->
 <div id="experience" class="section">
-
 <div class="exp-title">Experience & Education</div>
-
 <div class="timeline">
 
   <div class="item">
     <h3>The University of Hong Kong</h3>
-    <div class="meta">2025.09 – Present</div>
-    <div class="desc">Master in China Development Studies</div>
+    <div class="meta">M.A. in China Development Studies | Sep 2025 – Present</div>
+    <div class="desc">Relevant coursework: Chinese Economic Development and Transition, Contemporary Chinese Politics, Globalization and Spatial Economic Restructuring in China, China's Land and Housing System Studies.</div>
   </div>
 
   <div class="item">
-    <h3>Dalian University of Technology</h3>
-    <div class="meta">2021.09 – 2025.06</div>
-    <div class="desc">Bachelor in Broadcasting and Journalism</div>
+    <h3>Dalian University of Technology (985/211/Double First-Class)</h3>
+    <div class="meta">B.A. in Broadcasting & Television | Sep 2021 – Jun 2025 | GPA 89.2/100</div>
+    <div class="desc">Relevant coursework: Media Management, Public Relations Communication, Foundations of Computational Communication, Global Marketing Trends, Online Public Opinion Supervision Regulations.</div>
   </div>
 
   <div class="item">
-    <h3>Hunan Broadcasting System</h3>
-    <div class="meta">2024.09 – 2024.12</div>
-    <div class="desc">Assistant Director / Media Production Intern</div>
+    <h3>Hunan Broadcasting System (HBS) | International Channel</h3>
+    <div class="meta">Director & PR Department, Editorial Intern | Sep 2024 – Dec 2024</div>
+    <div class="desc">Designed and executed integrated communication campaigns for the 70th anniversary of Tongdao Dong Autonomous County; planned the "Dong Fashion Night in Changsha" flash mob event with nearly 200 million topic views, covered by the Ministry of Culture and Tourism. Optimized narrative structure for the historical stage play "The Turning Point at Tongdao" with an "expert commentary + scenario reenactment" approach. Produced the International Channel's English promotional brochure visualizing coverage across 200+ countries.</div>
   </div>
 
   <div class="item">
-    <h3>People’s Daily Online</h3>
-    <div class="meta">2023.12 – 2024.03</div>
-    <div class="desc">Editorial Intern</div>
+    <h3>People's Daily Online | Mobile Content Department</h3>
+    <div class="meta">Editorial Intern | Dec 2023 – Mar 2024</div>
+    <div class="desc">Published 20+ news articles on the PC portal covering academicians and university events; produced and reviewed 48 WeChat articles for the Education Channel; created 10+ graphic design works. Deeply involved in the 2024 National Two Sessions "Education Power" interview series, completing 6 interview drafts with 5 featured on the homepage of the Two Sessions special coverage.</div>
   </div>
 
   <div class="item">
-    <h3>China Youth Media Association</h3>
-    <div class="meta">2023.06 – 2024.06</div>
-    <div class="desc">Executive Chairman</div>
+    <h3>China Youth Campus Media (CYCM)</h3>
+    <div class="meta">15th Executive Chairman / (Liaoning) 13th Executive Chairman | Jun 2023 – Jun 2024</div>
+    <div class="desc">Led the 2024 CYCM Liaoning Annual Conference themed "Integration · Innovation · Development," inviting China News Award winners and China Youth Daily executives, hosting 150+ attendees from 18 universities. Coordinated 129 student media organizations across 21 universities; organized 20+ cross-campus collaborative events with cumulative views exceeding 100,000.</div>
   </div>
 
   <div class="item">
-    <h3>DUT Media Center</h3>
-    <div class="meta">2021.09 – 2024.06</div>
-    <div class="desc">Deputy Director</div>
+    <h3>Dalian University of Technology Converged Media Center</h3>
+    <div class="meta">Executive Deputy Director / Student Press Corps President | Sep 2021 – Jun 2024</div>
+    <div class="desc">Led 12 in-depth interview projects featuring high-profile figures including designers of the Wentian space lab module and renowned writers; related articles accumulated 770,000+ views and were republished by People's Daily, Xinhua News Agency, and Guangming Daily. Oversaw converged media strategies for 10+ major university events. Managed a 30-member student journalist team; led the team to win 5 national honors including "National Outstanding Influential University Visual Media Team."</div>
   </div>
 
   <div class="item">
-    <h3>Volunteer Service Center</h3>
-    <div class="meta">2021.09 – 2024.06</div>
-    <div class="desc">Director</div>
+    <h3>DUT School of Humanities Volunteer Service Center</h3>
+    <div class="meta">Director | Sep 2021 – Jun 2024</div>
+    <div class="desc">Organized 50+ volunteer activities over three years with 1,000+ participants and 2,000+ service hours. Founded two volunteer teams: "Mulberry Guardian" hospice care and "Silver Wisdom Classroom" digital literacy training for seniors; partnered with Dalian Fourth Hospital for end-of-life psychological support and established community dual-track teaching points for senior smartphone training. Led a summer teaching program in Puyang, Henan, conducting field teaching and producing local industry research reports.</div>
   </div>
 
 </div>
