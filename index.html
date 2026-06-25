@@ -5,17 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chenyu Nie</title>
 
+<!-- Roboto -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial;
+  font-family:"Roboto", sans-serif;
 }
 
 body{
   background:#f6f8fb;
   color:#1f2937;
+  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -23,17 +27,18 @@ body{
   background:linear-gradient(135deg,#3fc1a9,#36b3b0);
   color:white;
   text-align:center;
-  padding:55px 20px 75px;
+  padding:60px 20px 80px;
 }
 
 .header h1{
-  font-size:48px;
-  font-weight:700;
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:0.5px;
 }
 
 .header p{
   font-size:18px;
-  margin-top:8px;
+  margin-top:10px;
   opacity:0.95;
 }
 
@@ -47,7 +52,7 @@ body{
   justify-content:center;
   gap:40px;
   padding:14px 0;
-  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  box-shadow:0 2px 14px rgba(0,0,0,0.06);
 }
 
 .nav button{
@@ -55,20 +60,37 @@ body{
   background:none;
   cursor:pointer;
   font-size:16px;
+  font-weight:700;
   padding:8px 12px;
   border-radius:10px;
-  transition:.25s;
+  transition:.3s;
   position:relative;
+  color:#374151;
+  overflow:hidden;
+}
+
+/* hover 光层 */
+.nav button::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,#10b98122,#06b6d422);
+  opacity:0;
+  transition:.3s;
+  border-radius:10px;
+}
+
+.nav button:hover::before{
+  opacity:1;
 }
 
 .nav button:hover{
   transform:translateY(-2px);
-  color:#10b981;
+  color:#059669;
 }
 
 .nav button.active{
   color:#059669;
-  font-weight:600;
 }
 
 .nav button.active::after{
@@ -89,8 +111,19 @@ body{
   padding:0 20px;
 }
 
-.section{display:none;}
-.section.active{display:block;}
+/* ================= PAGE ANIMATION ================= */
+.section{
+  display:none;
+  opacity:0;
+  transform:translateY(18px);
+  transition:all .45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.active{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* ================= ABOUT ================= */
 .about-wrap{
@@ -98,10 +131,12 @@ body{
 }
 
 .greeting{
-  font-size:22px;
-  font-weight:600;
+  font-size:30px;
+  font-weight:800;
   color:#059669;
   margin-bottom:18px;
+  letter-spacing:0.5px;
+  text-shadow:0 4px 20px rgba(16,185,129,0.25);
 }
 
 .avatar{
@@ -110,36 +145,32 @@ body{
   border-radius:50%;
   object-fit:cover;
   margin:0 auto 18px;
-  border:4px solid #a7f3d0; /* 绿色边框 */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border:4px solid #a7f3d0;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  transition:.3s;
 }
 
-/* 绿色对话框卡片 */
+.avatar:hover{
+  transform:scale(1.03);
+}
+
 .card{
   background:white;
   border-radius:14px;
   padding:22px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left; /* 文字左对齐更清晰 */
-  font-size: 15px;
-  line-height: 1.7;
-  color: #374151;
+  max-width:800px;
+  margin:0 auto;
+  text-align:left;
+  font-size:15px;
+  line-height:1.7;
+  color:#374151;
+  transition:.3s;
 }
 
-/* 模拟气泡的小尾巴，增加真实感 */
-.card::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -10px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid white;
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 35px rgba(0,0,0,0.08);
 }
 
 /* ================= PROJECTS ================= */
@@ -155,6 +186,11 @@ body{
   border-radius:999px;
   border:2px solid #10b981;
   outline:none;
+  transition:.3s;
+}
+
+.search-bar input:focus{
+  box-shadow:0 0 0 4px rgba(16,185,129,0.15);
 }
 
 .projects-grid{
@@ -168,11 +204,12 @@ body{
   border-radius:14px;
   overflow:hidden;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
-  transition:.25s;
+  transition:.3s;
 }
 
 .project-card:hover{
   transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.1);
 }
 
 .project-img{
@@ -186,7 +223,7 @@ body{
 
 .project-title{
   font-size:18px;
-  font-weight:600;
+  font-weight:700;
 }
 
 .project-desc{
@@ -214,117 +251,110 @@ body{
 /* ================= EXPERIENCE ================= */
 .exp-title{
   font-size:26px;
-  font-weight:700;
+  font-weight:800;
   margin-bottom:20px;
-  text-align: center;
+  text-align:center;
 }
 
 .timeline{
   border-left:3px solid #10b981;
   padding-left:20px;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width:800px;
+  margin:0 auto;
 }
 
 .exp-item{
   margin-bottom:26px;
-  position: relative;
-  padding-left: 20px;
+  position:relative;
+  padding-left:20px;
 }
 
-/* 时间线圆点 */
-.exp-item::before {
-  content: '';
-  position: absolute;
-  left: -26px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  background: #10b981;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #10b981;
+.exp-item::before{
+  content:'';
+  position:absolute;
+  left:-26px;
+  top:6px;
+  width:12px;
+  height:12px;
+  background:#10b981;
+  border-radius:50%;
+  border:3px solid white;
+  box-shadow:0 0 0 2px #10b981;
 }
 
 .exp-item h3{
   font-size:18px;
-  font-weight:600;
+  font-weight:700;
 }
 
 .exp-meta{
   font-size:13px;
   color:#6b7280;
-  margin:4px 0 6px;
+  margin-top:4px;
 }
 
 .exp-desc{
   font-size:14px;
+  margin-top:6px;
   color:#374151;
   line-height:1.6;
 }
 
 /* ================= CONTACT ================= */
-.contact-section {
-  text-align: center;
-  padding: 40px 20px;
+.contact{
+  text-align:center;
+  padding:60px 20px;
 }
 
-.contact-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #059669;
-  margin-bottom: 15px;
+.contact h2{
+  font-size:32px;
+  font-weight:800;
+  color:#059669;
+  margin-bottom:12px;
 }
 
-.contact-desc {
-  font-size: 16px;
-  color: #4b5563;
-  max-width: 600px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+.contact p{
+  max-width:600px;
+  margin:0 auto 30px;
+  color:#4b5563;
+  line-height:1.6;
 }
 
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+.contact-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
 }
 
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #10b981, #06b6d4);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+.contact-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  color:white;
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  box-shadow:0 10px 25px rgba(16,185,129,0.25);
+  transition:.3s;
 }
 
-.contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-}
-
-.contact-btn i {
-  font-size: 16px;
+.contact-btn:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 18px 40px rgba(16,185,129,0.35);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <h1>Chenyu Nie</h1>
-  Hong Kong University | Media, Data & Computational Social Science
+  <p>Media · Data · Computational Social Science</p>
 </div>
 
-<!-- NAV -->
 <div class="nav">
   <button class="active" onclick="show('about',this)">About</button>
   <button onclick="show('projects',this)">Projects</button>
@@ -334,24 +364,21 @@ body{
 
 <div class="container">
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 <div id="about" class="section active">
-
   <div class="about-wrap">
     <div class="greeting">Hey, nice meeting you!</div>
-    <!-- 替换为你自己的头像图片路径 -->
-    <img class="avatar" src="your-photo.jpg" alt="Chenyu Nie">
-    
+
+    <img class="avatar" src="your-photo.jpg">
+
     <div class="card">
-      Hello! I’m <b>Chenyu Nie</b>.  
-      I am currently pursuing a Master’s degree at The University of Hong Kong, focusing on China development, media studies, and computational social science.  
-      My work combines qualitative field research with quantitative data analysis (Python, NLP, LDA, SPSS). I love bridging the gap between technology and strategy to create impactful digital solutions.
+      Hello! I’m <b>Chenyu Nie</b>, focusing on media studies, data analysis, and computational social science research.
+      I combine qualitative research with quantitative methods (Python, NLP, SPSS) to explore social behavior and digital culture.
     </div>
   </div>
-
 </div>
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
 <div id="projects" class="section">
 
   <div class="search-bar">
@@ -363,9 +390,9 @@ body{
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-        <div class="project-title">Youth Attitudes Toward Aging Issues on Social Media</div>
+        <div class="project-title">Social Media Aging Sentiment Study</div>
         <div class="project-desc">
-          Built analytical framework based on NAS and IRC theory. Applied Python scraping, LDA topic modeling and sentiment analysis on Bilibili danmaku data. Identified 58.35% negative sentiment and strong meme-driven discussions around aging.
+          LDA + sentiment analysis on Bilibili data to study generational perception of aging issues.
         </div>
         <div class="tags">
           <span class="tag">Python</span>
@@ -378,90 +405,54 @@ body{
     <div class="project-card">
       <div class="project-img"></div>
       <div class="project-content">
-        <div class="project-title">Algorithmic Perception of Poverty in Short Videos</div>
+        <div class="project-title">Algorithmic Media Perception Study</div>
         <div class="project-desc">
-          Investigated how short-video platforms shape public perception of poverty through algorithmic curation. Analyzed viewer comments and engagement metrics to understand sentiment polarization.
+          Investigated how recommendation systems shape perception in short video platforms.
         </div>
         <div class="tags">
-          <span class="tag">Data Analysis</span>
-          <span class="tag">Sentiment Analysis</span>
+          <span class="tag">Data</span>
           <span class="tag">SPSS</span>
+          <span class="tag">Research</span>
         </div>
       </div>
     </div>
 
   </div>
-
 </div>
 
-<!-- ================= EXPERIENCE ================= -->
+<!-- EXPERIENCE -->
 <div id="experience" class="section">
 
-  <h2 class="exp-title">Experience & Education</h2>
+  <div class="exp-title">Experience & Education</div>
+
   <div class="timeline">
 
     <div class="exp-item">
-      <h3>Graduate Student Supervisor @ Laurie Burns McRobbie Serve IT Clinic</h3>
-      <div class="exp-meta">Aug 2025 – Present | California, USA</div>
-      <div class="exp-desc">
-        Leading a team of graduate students to provide IT support for local non-profits. Managed project timelines, client communication, and technical troubleshooting for over 15 organizations.
-      </div>
+      <h3>University of Hong Kong</h3>
+      <div class="exp-meta">Master | Media / Data Science</div>
     </div>
 
     <div class="exp-item">
-      <h3>Business Analysis Intern @ Xunda Corp</h3>
-      <div class="exp-meta">May 2025 – Aug 2025 | California, USA</div>
-      <div class="exp-desc">
-        Conducted market research and data visualization for product development. Collaborated with cross-functional teams to optimize business processes using SQL and Tableau.
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <h3>Graduate Assistant, MSIS Core @ Kelley School of Business</h3>
-      <div class="exp-meta">Aug 2024 – Present | Indiana University</div>
-      <div class="exp-desc">
-        Assisted professors in teaching MIS courses. Graded assignments, held office hours, and facilitated classroom discussions on digital transformation and cloud technology.
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <h3>M.S. in Information Systems</h3>
-      <div class="exp-meta">Indiana University Bloomington | 2024–2025</div>
-      <div class="exp-desc">
-        Focused on AI, Cloud Technology, and Business-driven innovation. GPA: 3.85/4.0.
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <h3>B.S. in Informatics</h3>
-      <div class="exp-meta">Indiana University Bloomington | 2019–2024</div>
-      <div class="exp-desc">
-        Double major in Informatics and Psychology. Graduated with honors.
-      </div>
+      <h3>Dalian University of Technology</h3>
+      <div class="exp-meta">Bachelor | Communication</div>
     </div>
 
   </div>
-
 </div>
 
-<!-- ================= CONTACT ================= -->
-<div id="contact" class="section contact-section">
+<!-- CONTACT -->
+<div id="contact" class="section contact">
 
-  <h2 class="contact-title">Let's get in touch!</h2>
-  <p class="contact-desc">
-    I love connecting with people interested in technology, data, and design. Whether it's collaboration, opportunity, or just a chat — feel free to reach out!
-  
-  
+  <h2>Let's get in touch!</h2>
+  <p>
+    I love connecting with people interested in technology, data, and design.
+    Feel free to reach out for collaboration or discussion.
+  </p>
+
   <div class="contact-buttons">
-    <a href="mailto:chenyu.nie@example.com" class="contact-btn">
-      <i>📧</i> Email Me
-    </a>
-    <a href="https://linkedin.com/in/chenyu-nie" target="_blank" class="contact-btn">
-      <i>🔗</i> LinkedIn
-    </a>
-    <a href="https://github.com/chenyu-nie" target="_blank" class="contact-btn">
-      <i>💻</i> GitHub
-    </a>
+    <a class="contact-btn" href="#">📧 Email Me</a>
+    <a class="contact-btn" href="#">LinkedIn</a>
+    <a class="contact-btn" href="#">GitHub</a>
   </div>
 
 </div>
@@ -469,14 +460,20 @@ body{
 </div>
 
 <script>
-function show(id, el) {
-  // 隐藏所有 section
-  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-  // 显示目标 section
-  document.getElementById(id).classList.add('active');
-  
-  // 更新导航按钮状态
-  document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.remove('active');
+    s.style.display='none';
+  });
+
+  const target=document.getElementById(id);
+  target.style.display='block';
+
+  requestAnimationFrame(()=>{
+    target.classList.add('active');
+  });
+
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
 }
 </script>
