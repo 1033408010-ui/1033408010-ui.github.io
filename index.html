@@ -39,20 +39,15 @@
       color: white;
     }
 
-    /* 页面区块切换控制 */
-    .page-section {
-      display: none;
-    }
-    .page-section.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
+    /* 页面区块切换 */
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.5s ease; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* About 页面专属样式 */
+    /* About 页面样式（完全按你截图） */
     .about-header {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -62,20 +57,19 @@
       height: 160px;
       margin: 0 auto 1.5rem;
       border-radius: 50%;
-      border: 4px solid #a8e6cf; /* 浅绿色边框 */
+      border: 4px solid #a8e6cf;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-      background: white; /* 防止图片加载前背景透明 */
+      background: white;
     }
     .avatar {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* 保证图片填满圆形且不拉伸 */
+      object-fit: cover;
     }
 
-    /* 绿色对话框 */
     .intro-bubble {
-      background: #e8f5f1; /* 淡绿色背景 */
+      background: #e8f5f1;
       border-radius: 16px;
       padding: 1.8rem 2rem;
       margin: 0 auto 3rem;
@@ -87,28 +81,23 @@
       color: #2c3e50;
       line-height: 1.7;
     }
-    .intro-bubble strong {
-      color: #333;
-    }
+    .intro-bubble strong { color: #333; }
 
     h2.section-title {
       text-align: center;
       font-size: 1.8rem;
-      color: #27ae60; /* 绿色标题 */
+      color: #27ae60;
       margin-bottom: 2rem;
       font-weight: 600;
     }
 
-    /* 时间线列表 */
-    .timeline-list {
-      list-style: none;
-      padding-left: 0;
-    }
+    /* 时间线 */
+    .timeline-list { list-style: none; padding-left: 0; }
     .timeline-list li {
       position: relative;
       padding-left: 1.5rem;
       margin-bottom: 1.8rem;
-      border-left: 3px solid #52c9a6; /* 左侧绿线 */
+      border-left: 3px solid #52c9a6;
       padding-bottom: 0.5rem;
     }
     .timeline-list li::before {
@@ -130,6 +119,20 @@
     .timeline-list .item-meta {
       font-size: 0.95rem;
       color: #666;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-list .item-desc {
+      font-size: 0.93rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* 其他页面占位 */
+    .placeholder {
+      text-align: center;
+      padding: 4rem 0;
+      color: #999;
+      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -137,95 +140,129 @@
 
   <!-- 导航栏 -->
   <nav>
-    <a href="#" class="nav-link active" data-target="home">Home</a>
-    <a href="#" class="nav-link" data-target="about">About</a>
-    <a href="#" class="nav-link" data-target="projects">Projects</a>
+    <a href="#" class="nav-link active" data-target="about">About</a>
+    <a href="#" class="nav-link" data-target="research">Research</a>
+    <a href="#" class="nav-link" data-target="internship">Internship</a>
+    <a href="#" class="nav-link" data-target="leadership">Leadership</a>
     <a href="#" class="nav-link" data-target="contact">Contact</a>
   </nav>
 
   <div class="container">
 
-    <!-- Home 页面 (默认显示) -->
-    <section id="home" class="page-section active">
-      <div style="text-align: center; padding: 4rem 0;">
-        <h1 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem;">欢迎来到我的个人网站</h1>
-        <p style="font-size: 1.2rem; color: #666;">点击下方导航栏探索我的简历与项目
-      </div>
-    </section>
-
-    <!-- About 页面 (使用你的新头像) -->
-    <section id="about" class="page-section">
+    <!-- About 页面（默认显示，内容已填入你的简历） -->
+    <section id="about" class="page-section active">
       <div class="about-header">
-        <!-- 这里替换为你的新头像 -->
         <div class="avatar-container">
-          <img src="微信图片_20260201113220_17614_10.jpg" alt="Binyan's Avatar" class="avatar">
+          <img src="你的头像图片路径.jpg" alt="Chenyu Nie" class="avatar">
         </div>
-        
+
         <div class="intro-bubble">
-          Hello! I'm <strong>Binyan</strong>, a passionate Information Systems student at Indiana University focusing on AI, Cloud Technology, and business-driven innovation. I love bridging the gap between technology and strategy to create impactful digital solutions.
+          Hello! I'm <strong>Chenyu Nie</strong>, a Master's student in China Development Studies at The University of Hong Kong. My academic interests lie at the intersection of communication, public policy, and data analytics. I am passionate about leveraging technology and research to address social challenges and drive meaningful impact.
         </div>
       </div>
 
       <h2 class="section-title">Experience & Education</h2>
-      
+
       <ul class="timeline-list">
         <li>
-          <div class="item-title">Graduate Student Supervisor @ Laurie Burns McRobbie Serve IT Clinic</div>
-          <div class="item-meta">Aug 2025 – Present | California, USA</div>
+          <div class="item-title">The University of Hong Kong</div>
+          <div class="item-meta">M.A. in China Development Studies | Sep 2025 – Present</div>
+          <div class="item-desc">Relevant coursework: Chinese Economic Development and Transition, Contemporary Chinese Politics, Globalization and Spatial Economic Restructuring in China, China's Land and Housing System Studies.</div>
         </li>
+
         <li>
-          <div class="item-title">Business Analysis Intern @ Xunda Corp</div>
-          <div class="item-meta">May 2025 – Aug 2025 | California, USA</div>
+          <div class="item-title">Dalian University of Technology (985/211)</div>
+          <div class="item-meta">B.A. in Broadcasting & Television | Sep 2021 – Jun 2025 | GPA 89.2/100</div>
+          <div class="item-desc">Relevant coursework: Media Management, Public Relations Communication, Foundations of Computational Communication, Global Marketing Trends, Online Public Opinion Supervision Regulations.</div>
         </li>
+
         <li>
-          <div class="item-title">Graduate Assistant, MSIS Core @ Kelley School of Business</div>
-          <div class="item-meta">Aug 2024 – Present | Indiana University</div>
+          <div class="item-title">Research: Youth Attitudes Toward Aging Issues on Social Media</div>
+          <div class="item-meta">Jan 2025 – Mar 2025 | Core Member</div>
+          <div class="item-desc">Built an analytical framework based on NAS and IRC theories; collected and analyzed Bilibili bullet comment data using Python (LDA topic modeling, sentiment analysis); conducted 11 in-depth interviews validating the polarizing effect of meme culture; proposed "first-person perspective" content strategies to mitigate intergenerational gaps.</div>
         </li>
+
         <li>
-          <div class="item-title">M.S. in Information Systems</div>
-          <div class="item-meta">Indiana University Bloomington | 2024–2025</div>
+          <div class="item-title">Research: Digital Transformation of Red Culture & Cultural Creative Products</div>
+          <div class="item-meta">Jan 2023 – Jan 2024 | Core Member</div>
+          <div class="item-desc">Designed cross-provincial field research across Beijing, Shenyang, and Dalian; proposed a "digital-multidimensional-interactive-lightweight" design mechanism for cultural products; co-developed an AR+NFC digital school badge; second author of a CNKI-indexed publication with 150,000+ views and 10+ media coverages.</div>
         </li>
+
         <li>
-          <div class="item-title">B.S. in Informatics</div>
-          <div class="item-meta">Indiana University Bloomington | 2019–2024</div>
+          <div class="item-title">Research: "Internet + Rural Education" Development Path</div>
+          <div class="item-meta">Jan 2022 – Aug 2022 | Core Member</div>
+          <div class="item-desc">Proposed the hypothesis that mass media positively moderates rural online education penetration; collected 120 valid samples through field research; second author of a Wanfang-indexed publication proposing policy recommendations for education digital transformation.</div>
+        </li>
+
+        <li>
+          <div class="item-title">Hunan Broadcasting System (HBS)</div>
+          <div class="item-meta">International Channel, Director & PR Dept. | Sep 2024 – Dec 2024</div>
+          <div class="item-desc">Led integrated communication campaigns for the 70th anniversary of Tongdao Dong Autonomous County; planned the "Dong Fashion Night in Changsha" flash mob event with nearly 200 million topic views; optimized narrative structure for the historical stage play "The Turning Point at Tongdao."</div>
+        </li>
+
+        <li>
+          <div class="item-title">People's Daily Online</div>
+          <div class="item-meta">Mobile Content Dept., Editorial Intern | Dec 2023 – Mar 2024</div>
+          <div class="item-desc">Published 20+ news articles and 48 WeChat posts; created 10+ design works; participated in "Education Power" documentary series; completed 6 interview drafts for the 2024 National Two Sessions, with 5 featured on the homepage.</div>
+        </li>
+
+        <li>
+          <div class="item-title">China Youth Campus Media</div>
+          <div class="item-meta">15th Executive Chairman | Jun 2023 – Jun 2024</div>
+          <div class="item-desc">Led the 2024 CYCM Liaoning Annual Conference with 150+ attendees; coordinated 129 student media organizations across 21 universities; organized 20+ cross-campus events with 100,000+ cumulative views.</div>
+        </li>
+
+        <li>
+          <div class="item-title">Dalian University of Technology Converged Media Center</div>
+          <div class="item-meta">Executive Deputy Director | Sep 2021 – Jun 2024</div>
+          <div class="item-desc">Led 12 in-depth interview projects with 770,000+ total views; managed a 30-member student journalist team; won 5 national honors including "National Outstanding Influential University Visual Media Team."</div>
         </li>
       </ul>
     </section>
 
-    <!-- Projects 页面 (占位) -->
-    <section id="projects" class="page-section">
-      <h2 class="section-title">Projects</h2>
-      这里放你的项目展示...
+    <!-- Research 页面 -->
+    <section id="research" class="page-section">
+      <div class="placeholder">
+        <h2 style="color:#27ae60; margin-bottom:1rem;">Research</h2>
+        Coming soon...
+      </div>
     </section>
 
-    <!-- Contact 页面 (占位) -->
+    <!-- Internship 页面 -->
+    <section id="internship" class="page-section">
+      <div class="placeholder">
+        <h2 style="color:#27ae60; margin-bottom:1rem;">Internship</h2>
+        Coming soon...
+      </div>
+    </section>
+
+    <!-- Leadership 页面 -->
+    <section id="leadership" class="page-section">
+      <div class="placeholder">
+        <h2 style="color:#27ae60; margin-bottom:1rem;">Leadership</h2>
+        Coming soon...
+      </div>
+    </section>
+
+    <!-- Contact 页面 -->
     <section id="contact" class="page-section">
-      <h2 class="section-title">Contact</h2>
-      这里放你的联系方式...
+      <div class="placeholder">
+        <h2 style="color:#27ae60; margin-bottom:1rem;">Contact</h2>
+        <p style="margin-top:1rem;">Email: your.email@163.com</p>
+        <p>GitHub: github.com/Chenyu-Nie</p>
+      </div>
     </section>
 
   </div>
 
   <script>
-    // 导航切换逻辑
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        // 1. 移除所有链接的 active 类
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        // 2. 给当前点击的链接加 active 类
         this.classList.add('active');
-        
-        // 3. 获取目标页面 ID
         const targetId = this.getAttribute('data-target');
-        
-        // 4. 隐藏所有页面区块
-        document.querySelectorAll('.page-section').forEach(section => {
-          section.classList.remove('active');
-        });
-        
-        // 5. 显示目标页面区块
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
         document.getElementById(targetId).classList.add('active');
       });
     });
