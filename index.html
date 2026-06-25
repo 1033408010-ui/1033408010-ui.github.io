@@ -1,300 +1,287 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Personal Homepage</title>
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --bg:#f6f7fb;
-  --card:#ffffff;
-  --text:#1f2937;
-  --sub:#6b7280;
-  --main:#2563eb;
-  --border:#e5e7eb;
-}
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: "Inter", system-ui;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#f6f8fb;
+  color:#1f2937;
 }
 
-/* layout */
-.wrapper{
-  display:flex;
-  max-width:1100px;
-  margin:0 auto;
-  padding:40px 20px;
-  gap:40px;
+/* ===== HERO HEADER ===== */
+.header{
+  background: linear-gradient(135deg,#3fc1a9,#36b3b0);
+  color:white;
+  text-align:center;
+  padding:50px 20px 70px;
 }
 
-/* sidebar */
-.sidebar{
-  width:280px;
-  position:sticky;
-  top:40px;
-  height:fit-content;
+.header h1{
+  font-size:48px;
+  font-weight:700;
+  margin-bottom:10px;
 }
 
-.avatar{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:16px;
-  border:3px solid #dbeafe;
+.header p{
+  font-size:18px;
+  opacity:0.95;
 }
 
-.name{
-  font-size:20px;
-  font-weight:600;
-}
-
-.role{
-  color:var(--sub);
-  margin-top:6px;
-  font-size:14px;
-}
-
-.info{
-  margin-top:16px;
-  font-size:13px;
-  color:var(--sub);
-  line-height:1.8;
-}
-
+/* ===== NAV (fixed) ===== */
 .nav{
-  margin-top:24px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:white;
   display:flex;
-  flex-direction:column;
-  gap:10px;
+  justify-content:center;
+  gap:40px;
+  padding:14px 0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
 }
 
-.nav a{
-  text-decoration:none;
-  color:var(--sub);
-  font-size:14px;
-  padding:8px 10px;
-  border-radius:8px;
+.nav button{
+  background:none;
+  border:none;
+  font-size:16px;
+  color:#374151;
+  cursor:pointer;
+  padding:6px 10px;
   transition:.2s;
 }
 
-.nav a:hover{
-  background:#eef2ff;
-  color:var(--main);
+.nav button:hover{
+  color:#10b981;
 }
 
-/* main */
-.main{
-  flex:1;
+.nav button.active{
+  color:#10b981;
+  border-bottom:2px solid #10b981;
 }
 
+/* ===== CONTENT ===== */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:0 20px;
+}
+
+/* sections */
 .section{
-  margin-bottom:40px;
+  display:none;
+  animation:fade .25s ease;
 }
 
-.section-title{
-  font-size:16px;
+.section.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== ABOUT ===== */
+.avatar{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:0 auto 20px;
+  border:4px solid #a7f3d0;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card{
+  background:white;
+  border-radius:14px;
+  padding:24px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom:18px;
+}
+
+.title{
+  font-size:22px;
   font-weight:600;
-  margin-bottom:16px;
+  margin-bottom:10px;
   color:#111827;
 }
 
-/* cards */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:16px 18px;
-  margin-bottom:12px;
-  transition:.2s;
+.meta{
+  font-size:14px;
+  color:#6b7280;
+  margin-bottom:8px;
 }
 
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-.card-title{
-  font-weight:600;
-  font-size:15px;
-}
-
-.card-meta{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:4px;
-}
-
-.card-desc{
-  margin-top:8px;
-  font-size:13px;
-  line-height:1.6;
+.desc{
+  font-size:14px;
+  line-height:1.7;
   color:#374151;
 }
 
-/* tags */
-.tag{
-  display:inline-block;
-  font-size:12px;
-  padding:2px 8px;
-  background:#eef2ff;
-  color:var(--main);
+/* contact buttons */
+.btns{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.btn{
+  padding:10px 16px;
   border-radius:999px;
-  margin-top:8px;
-}
-
-/* smooth scroll */
-html{
-  scroll-behavior:smooth;
-}
-
-/* mobile */
-@media(max-width:900px){
-  .wrapper{
-    flex-direction:column;
-  }
-  .sidebar{
-    position:relative;
-    width:100%;
-  }
+  border:none;
+  cursor:pointer;
+  background:#10b981;
+  color:white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <img src="your-avatar.jpg" class="avatar">
-
-    <div class="name">你的名字</div>
-    <div class="role">HKU · China Development Studies</div>
-
-    <div class="info">
-      Email: xxx@163.com<br>
-      Tel: 139xxxx<br>
-      Location: Hong Kong / Singapore<br>
-    </div>
-
-    <div class="nav">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#experience">Experience</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-
-  <!-- Main -->
-  <div class="main">
-
-    <!-- ABOUT -->
-    <div id="about" class="section">
-      <div class="section-title">About</div>
-
-      <div class="card">
-        <div class="card-desc">
-          I am a Master’s student at The University of Hong Kong, focusing on communication, data-driven social research, and policy studies.
-          My research combines computational methods (Python, text mining, LDA) with social science theory to study digital society phenomena.
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH -->
-    <div id="research" class="section">
-      <div class="section-title">Research</div>
-
-      <div class="card">
-        <div class="card-title">Youth Attitudes Toward Aging Issues on Social Media</div>
-        <div class="card-meta">2025.01 – 2025.03 · Bilibili Data Analysis</div>
-        <div class="card-desc">
-          Built NAS + IRC theoretical framework. Collected bullet-screen data via Python. Applied LDA topic modeling and sentiment analysis.
-          Found strong negative sentiment (58.35%) and meme-driven polarization effects.
-        </div>
-        <div class="tag">Python</div>
-        <div class="tag">LDA</div>
-        <div class="tag">Text Mining</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Digital Transformation of Cultural Creativity</div>
-        <div class="card-meta">2023 – 2024</div>
-        <div class="card-desc">
-          Cross-regional field research + AR/NFC product design. Published paper in CNKI journal with media coverage over 150k views.
-        </div>
-        <div class="tag">AR</div>
-        <div class="tag">Qualitative Research</div>
-      </div>
-
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div id="experience" class="section">
-      <div class="section-title">Experience</div>
-
-      <div class="card">
-        <div class="card-title">Hunan Broadcasting System</div>
-        <div class="card-meta">Director / PR Intern · 2024</div>
-        <div class="card-desc">
-          Designed integrated communication campaign for 70th anniversary of Tongdao County.
-          Flash mob campaign reached ~200M impressions.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">People’s Daily Online</div>
-        <div class="card-meta">Editorial Intern · 2023–2024</div>
-        <div class="card-desc">
-          Produced news articles, WeChat content, and participated in national-level editorial projects including Two Sessions coverage.
-        </div>
-      </div>
-
-    </div>
-
-    <!-- LEADERSHIP -->
-    <div id="leadership" class="section">
-      <div class="section-title">Leadership</div>
-
-      <div class="card">
-        <div class="card-title">China Youth Campus Media</div>
-        <div class="card-meta">Executive Chairman</div>
-        <div class="card-desc">
-          Coordinated 129 student media organizations across 21 universities and organized cross-campus media collaborations.
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CONTACT -->
-    <div id="contact" class="section">
-      <div class="section-title">Contact</div>
-
-      <div class="card">
-        <div class="card-desc">
-          Email: your_email@163.com<br>
-          GitHub: github.com/yourname<br>
-          Location: Hong Kong / Singapore
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+<!-- HEADER -->
+<div class="header">
+  <h1>你的名字</h1>
+  <p>HKU | China Development Studies | Data & Communication Research</p>
 </div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="active" onclick="show('about',this)">About</button>
+  <button onclick="show('projects',this)">Projects</button>
+  <button onclick="show('experience',this)">Experience</button>
+  <button onclick="show('education',this)">Education</button>
+  <button onclick="show('contact',this)">Contact</button>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <!-- ABOUT -->
+  <div id="about" class="section active">
+    <img src="your-photo.jpg" class="avatar">
+
+    <div class="card">
+      <div class="desc">
+        Hello! I am a Master’s student at The University of Hong Kong, focusing on communication research,
+        computational social science, and data-driven policy analysis.
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" class="section">
+
+    <div class="card">
+      <div class="title">Youth Attitudes Toward Aging Issues on Social Media</div>
+      <div class="meta">2025.01 – 2025.03</div>
+      <div class="desc">
+        Built NAS + IRC framework. Used Python for Bilibili data scraping, LDA topic modeling and sentiment analysis.
+        Identified 58.35% negative sentiment and strong meme-driven polarization effects.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">Digital Transformation of Cultural Creativity</div>
+      <div class="meta">2023 – 2024</div>
+      <div class="desc">
+        Cross-regional field study + AR/NFC product development. Published CNKI paper and media coverage over 150k views.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">Internet + Rural Education Research</div>
+      <div class="meta">2022</div>
+      <div class="desc">
+        120 sample field survey + media moderation hypothesis. Published in academic journal with policy implications.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div id="experience" class="section">
+
+    <div class="card">
+      <div class="title">Hunan Broadcasting System</div>
+      <div class="meta">Director / PR Intern | 2024</div>
+      <div class="desc">
+        Led integrated communication campaign for 70th anniversary of Tongdao County. Achieved ~200M exposure event.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">People’s Daily Online</div>
+      <div class="meta">Editorial Intern | 2023–2024</div>
+      <div class="desc">
+        Produced news articles, WeChat content, and participated in national Two Sessions reporting projects.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education" class="section">
+
+    <div class="card">
+      <div class="title">The University of Hong Kong</div>
+      <div class="meta">M.A. China Development Studies | 2025–Present</div>
+    </div>
+
+    <div class="card">
+      <div class="title">Dalian University of Technology</div>
+      <div class="meta">B.A. Broadcasting & Television | 2021–2025 | GPA 89.2</div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+
+    <div class="card">
+      <div class="desc">
+        Email: xxx@163.com<br>
+        Phone: 139xxxxxxx<br>
+        GitHub: github.com/xxx
+      </div>
+
+      <div class="btns">
+        <button class="btn">Email Me</button>
+        <button class="btn">LinkedIn</button>
+        <button class="btn">GitHub</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function show(id,btn){
+
+  document.querySelectorAll('.section')
+    .forEach(s=>s.classList.remove('active'));
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav button')
+    .forEach(b=>b.classList.remove('active'));
+
+  btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
