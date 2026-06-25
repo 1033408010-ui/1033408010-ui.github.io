@@ -1,272 +1,300 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chenyu Nie | Personal Website</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    .container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Homepage</title>
 
-    /* 导航栏 */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem 0;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      text-decoration: none;
-      color: #555;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-    nav a:hover, nav a.active {
-      background: #667eea;
-      color: white;
-    }
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    /* 页面区块切换 */
-    .page-section { display: none; }
-    .page-section.active { display: block; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+<style>
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --sub:#6b7280;
+  --main:#2563eb;
+  --border:#e5e7eb;
+}
 
-    /* About 页面样式（完全按你截图） */
-    .about-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    .avatar-container {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      border: 4px solid #a8e6cf;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-      background: white;
-    }
-    .avatar {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Inter", system-ui;
+}
 
-    .intro-bubble {
-      background: #e8f5f1;
-      border-radius: 16px;
-      padding: 1.8rem 2rem;
-      margin: 0 auto 3rem;
-      max-width: 600px;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(168, 230, 207, 0.4);
-      border-left: 5px solid #52c9a6;
-      font-size: 1.05rem;
-      color: #2c3e50;
-      line-height: 1.7;
-    }
-    .intro-bubble strong { color: #333; }
+body{
+  background:var(--bg);
+  color:var(--text);
+}
 
-    h2.section-title {
-      text-align: center;
-      font-size: 1.8rem;
-      color: #27ae60;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
+/* layout */
+.wrapper{
+  display:flex;
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 20px;
+  gap:40px;
+}
 
-    /* 时间线 */
-    .timeline-list { list-style: none; padding-left: 0; }
-    .timeline-list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 1.8rem;
-      border-left: 3px solid #52c9a6;
-      padding-bottom: 0.5rem;
-    }
-    .timeline-list li::before {
-      content: '';
-      position: absolute;
-      left: -8px;
-      top: 0;
-      width: 13px;
-      height: 13px;
-      background: #52c9a6;
-      border-radius: 50%;
-    }
-    .timeline-list .item-title {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #2c3e50;
-      margin-bottom: 0.2rem;
-    }
-    .timeline-list .item-meta {
-      font-size: 0.95rem;
-      color: #666;
-      margin-bottom: 0.5rem;
-    }
-    .timeline-list .item-desc {
-      font-size: 0.93rem;
-      color: #555;
-      line-height: 1.6;
-    }
+/* sidebar */
+.sidebar{
+  width:280px;
+  position:sticky;
+  top:40px;
+  height:fit-content;
+}
 
-    /* 其他页面占位 */
-    .placeholder {
-      text-align: center;
-      padding: 4rem 0;
-      color: #999;
-      font-size: 1.1rem;
-    }
-  </style>
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:16px;
+  border:3px solid #dbeafe;
+}
+
+.name{
+  font-size:20px;
+  font-weight:600;
+}
+
+.role{
+  color:var(--sub);
+  margin-top:6px;
+  font-size:14px;
+}
+
+.info{
+  margin-top:16px;
+  font-size:13px;
+  color:var(--sub);
+  line-height:1.8;
+}
+
+.nav{
+  margin-top:24px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:var(--sub);
+  font-size:14px;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:.2s;
+}
+
+.nav a:hover{
+  background:#eef2ff;
+  color:var(--main);
+}
+
+/* main */
+.main{
+  flex:1;
+}
+
+.section{
+  margin-bottom:40px;
+}
+
+.section-title{
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:16px;
+  color:#111827;
+}
+
+/* cards */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  margin-bottom:12px;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card-title{
+  font-weight:600;
+  font-size:15px;
+}
+
+.card-meta{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:4px;
+}
+
+.card-desc{
+  margin-top:8px;
+  font-size:13px;
+  line-height:1.6;
+  color:#374151;
+}
+
+/* tags */
+.tag{
+  display:inline-block;
+  font-size:12px;
+  padding:2px 8px;
+  background:#eef2ff;
+  color:var(--main);
+  border-radius:999px;
+  margin-top:8px;
+}
+
+/* smooth scroll */
+html{
+  scroll-behavior:smooth;
+}
+
+/* mobile */
+@media(max-width:900px){
+  .wrapper{
+    flex-direction:column;
+  }
+  .sidebar{
+    position:relative;
+    width:100%;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- 导航栏 -->
-  <nav>
-    <a href="#" class="nav-link active" data-target="about">About</a>
-    <a href="#" class="nav-link" data-target="research">Research</a>
-    <a href="#" class="nav-link" data-target="internship">Internship</a>
-    <a href="#" class="nav-link" data-target="leadership">Leadership</a>
-    <a href="#" class="nav-link" data-target="contact">Contact</a>
-  </nav>
+<div class="wrapper">
 
-  <div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="your-avatar.jpg" class="avatar">
 
-    <!-- About 页面（默认显示，内容已填入你的简历） -->
-    <section id="about" class="page-section active">
-      <div class="about-header">
-        <div class="avatar-container">
-          <img src="你的头像图片路径.jpg" alt="Chenyu Nie" class="avatar">
-        </div>
+    <div class="name">你的名字</div>
+    <div class="role">HKU · China Development Studies</div>
 
-        <div class="intro-bubble">
-          Hello! I'm <strong>Chenyu Nie</strong>, a Master's student in China Development Studies at The University of Hong Kong. My academic interests lie at the intersection of communication, public policy, and data analytics. I am passionate about leveraging technology and research to address social challenges and drive meaningful impact.
-        </div>
-      </div>
+    <div class="info">
+      Email: xxx@163.com<br>
+      Tel: 139xxxx<br>
+      Location: Hong Kong / Singapore<br>
+    </div>
 
-      <h2 class="section-title">Experience & Education</h2>
-
-      <ul class="timeline-list">
-        <li>
-          <div class="item-title">The University of Hong Kong</div>
-          <div class="item-meta">M.A. in China Development Studies | Sep 2025 – Present</div>
-          <div class="item-desc">Relevant coursework: Chinese Economic Development and Transition, Contemporary Chinese Politics, Globalization and Spatial Economic Restructuring in China, China's Land and Housing System Studies.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Dalian University of Technology (985/211)</div>
-          <div class="item-meta">B.A. in Broadcasting & Television | Sep 2021 – Jun 2025 | GPA 89.2/100</div>
-          <div class="item-desc">Relevant coursework: Media Management, Public Relations Communication, Foundations of Computational Communication, Global Marketing Trends, Online Public Opinion Supervision Regulations.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Research: Youth Attitudes Toward Aging Issues on Social Media</div>
-          <div class="item-meta">Jan 2025 – Mar 2025 | Core Member</div>
-          <div class="item-desc">Built an analytical framework based on NAS and IRC theories; collected and analyzed Bilibili bullet comment data using Python (LDA topic modeling, sentiment analysis); conducted 11 in-depth interviews validating the polarizing effect of meme culture; proposed "first-person perspective" content strategies to mitigate intergenerational gaps.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Research: Digital Transformation of Red Culture & Cultural Creative Products</div>
-          <div class="item-meta">Jan 2023 – Jan 2024 | Core Member</div>
-          <div class="item-desc">Designed cross-provincial field research across Beijing, Shenyang, and Dalian; proposed a "digital-multidimensional-interactive-lightweight" design mechanism for cultural products; co-developed an AR+NFC digital school badge; second author of a CNKI-indexed publication with 150,000+ views and 10+ media coverages.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Research: "Internet + Rural Education" Development Path</div>
-          <div class="item-meta">Jan 2022 – Aug 2022 | Core Member</div>
-          <div class="item-desc">Proposed the hypothesis that mass media positively moderates rural online education penetration; collected 120 valid samples through field research; second author of a Wanfang-indexed publication proposing policy recommendations for education digital transformation.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Hunan Broadcasting System (HBS)</div>
-          <div class="item-meta">International Channel, Director & PR Dept. | Sep 2024 – Dec 2024</div>
-          <div class="item-desc">Led integrated communication campaigns for the 70th anniversary of Tongdao Dong Autonomous County; planned the "Dong Fashion Night in Changsha" flash mob event with nearly 200 million topic views; optimized narrative structure for the historical stage play "The Turning Point at Tongdao."</div>
-        </li>
-
-        <li>
-          <div class="item-title">People's Daily Online</div>
-          <div class="item-meta">Mobile Content Dept., Editorial Intern | Dec 2023 – Mar 2024</div>
-          <div class="item-desc">Published 20+ news articles and 48 WeChat posts; created 10+ design works; participated in "Education Power" documentary series; completed 6 interview drafts for the 2024 National Two Sessions, with 5 featured on the homepage.</div>
-        </li>
-
-        <li>
-          <div class="item-title">China Youth Campus Media</div>
-          <div class="item-meta">15th Executive Chairman | Jun 2023 – Jun 2024</div>
-          <div class="item-desc">Led the 2024 CYCM Liaoning Annual Conference with 150+ attendees; coordinated 129 student media organizations across 21 universities; organized 20+ cross-campus events with 100,000+ cumulative views.</div>
-        </li>
-
-        <li>
-          <div class="item-title">Dalian University of Technology Converged Media Center</div>
-          <div class="item-meta">Executive Deputy Director | Sep 2021 – Jun 2024</div>
-          <div class="item-desc">Led 12 in-depth interview projects with 770,000+ total views; managed a 30-member student journalist team; won 5 national honors including "National Outstanding Influential University Visual Media Team."</div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Research 页面 -->
-    <section id="research" class="page-section">
-      <div class="placeholder">
-        <h2 style="color:#27ae60; margin-bottom:1rem;">Research</h2>
-        Coming soon...
-      </div>
-    </section>
-
-    <!-- Internship 页面 -->
-    <section id="internship" class="page-section">
-      <div class="placeholder">
-        <h2 style="color:#27ae60; margin-bottom:1rem;">Internship</h2>
-        Coming soon...
-      </div>
-    </section>
-
-    <!-- Leadership 页面 -->
-    <section id="leadership" class="page-section">
-      <div class="placeholder">
-        <h2 style="color:#27ae60; margin-bottom:1rem;">Leadership</h2>
-        Coming soon...
-      </div>
-    </section>
-
-    <!-- Contact 页面 -->
-    <section id="contact" class="page-section">
-      <div class="placeholder">
-        <h2 style="color:#27ae60; margin-bottom:1rem;">Contact</h2>
-        <p style="margin-top:1rem;">Email: your.email@163.com</p>
-        <p>GitHub: github.com/Chenyu-Nie</p>
-      </div>
-    </section>
-
+    <div class="nav">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 
-  <script>
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        const targetId = this.getAttribute('data-target');
-        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-        document.getElementById(targetId).classList.add('active');
-      });
-    });
-  </script>
+  <!-- Main -->
+  <div class="main">
+
+    <!-- ABOUT -->
+    <div id="about" class="section">
+      <div class="section-title">About</div>
+
+      <div class="card">
+        <div class="card-desc">
+          I am a Master’s student at The University of Hong Kong, focusing on communication, data-driven social research, and policy studies.
+          My research combines computational methods (Python, text mining, LDA) with social science theory to study digital society phenomena.
+        </div>
+      </div>
+    </div>
+
+    <!-- RESEARCH -->
+    <div id="research" class="section">
+      <div class="section-title">Research</div>
+
+      <div class="card">
+        <div class="card-title">Youth Attitudes Toward Aging Issues on Social Media</div>
+        <div class="card-meta">2025.01 – 2025.03 · Bilibili Data Analysis</div>
+        <div class="card-desc">
+          Built NAS + IRC theoretical framework. Collected bullet-screen data via Python. Applied LDA topic modeling and sentiment analysis.
+          Found strong negative sentiment (58.35%) and meme-driven polarization effects.
+        </div>
+        <div class="tag">Python</div>
+        <div class="tag">LDA</div>
+        <div class="tag">Text Mining</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Digital Transformation of Cultural Creativity</div>
+        <div class="card-meta">2023 – 2024</div>
+        <div class="card-desc">
+          Cross-regional field research + AR/NFC product design. Published paper in CNKI journal with media coverage over 150k views.
+        </div>
+        <div class="tag">AR</div>
+        <div class="tag">Qualitative Research</div>
+      </div>
+
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div id="experience" class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="card">
+        <div class="card-title">Hunan Broadcasting System</div>
+        <div class="card-meta">Director / PR Intern · 2024</div>
+        <div class="card-desc">
+          Designed integrated communication campaign for 70th anniversary of Tongdao County.
+          Flash mob campaign reached ~200M impressions.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">People’s Daily Online</div>
+        <div class="card-meta">Editorial Intern · 2023–2024</div>
+        <div class="card-desc">
+          Produced news articles, WeChat content, and participated in national-level editorial projects including Two Sessions coverage.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div id="leadership" class="section">
+      <div class="section-title">Leadership</div>
+
+      <div class="card">
+        <div class="card-title">China Youth Campus Media</div>
+        <div class="card-meta">Executive Chairman</div>
+        <div class="card-desc">
+          Coordinated 129 student media organizations across 21 universities and organized cross-campus media collaborations.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section">
+      <div class="section-title">Contact</div>
+
+      <div class="card">
+        <div class="card-desc">
+          Email: your_email@163.com<br>
+          GitHub: github.com/yourname<br>
+          Location: Hong Kong / Singapore
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>
